@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ByteLab — Learn. Build. Grow.</title>
+  <meta name="description" content="ByteLab is a student-led computer science learning community with free courses, coding challenges and projects.">
+  <link rel="icon" href="assets/bytelab-logo.svg">
+  <style>
+    :root{--bg:#07111f;--panel:#0c1a2b;--panel2:#10233a;--text:#f5f9ff;--muted:#9db0c8;--line:#20344d;--a:#36d1dc;--b:#6675ff;--ok:#55d98b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#07111f,#091728 55%,#07111f);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between}.brand img{height:46px;display:block;max-width:180px}.links{display:flex;gap:22px;align-items:center;font-size:14px;color:#c9d7e8}.links a:hover{color:#fff}.menu{display:none}
+    .hero{padding:88px 0 72px}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid #29415f;border-radius:999px;color:#b8d4f4;background:#0a1727;font-size:13px}
+    h1{font-size:clamp(44px,7vw,78px);line-height:1.02;margin:20px 0 18px;letter-spacing:-3px}.grad{background:linear-gradient(100deg,var(--a),#a58cff,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:19px;color:var(--muted);max-width:650px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:11px;border:1px solid #2b4665;font-weight:700;font-size:14px;cursor:pointer}.primary{background:linear-gradient(100deg,#2ccbd6,#6374ff);border:0;color:#fff}.ghost{background:#0b192a;color:#fff}
+    .heroCard{background:radial-gradient(circle at 20% 10%,#193a59,#0c192a 55%);border:1px solid #24415f;border-radius:24px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#cce8ff;font-size:14px;line-height:1.9}.comment{color:#7892ae}.key{color:#67e3ed}.str{color:#bda8ff}
+    section{padding:70px 0}.sectionHead{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:28px}.sectionHead h2{font-size:32px;margin:0}.sectionHead p{color:var(--muted);max-width:610px;margin:0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:rgba(12,26,43,.88);border:1px solid var(--line);border-radius:18px;padding:22px}.card h3{margin:8px 0 8px}.card p{color:var(--muted);font-size:14px}.tag{font-size:12px;color:#a8c8e9}.meet{border-color:#295e61;background:linear-gradient(135deg,#0c2730,#0c1b2b)}
+    .challenge{border:1px solid #324a72;background:linear-gradient(135deg,#101e36,#0b1929);border-radius:22px;padding:28px}.challenge code{display:block;background:#07111f;border:1px solid #1c3048;padding:17px;border-radius:12px;margin:16px 0;color:#d8e7f7}
+    form{display:grid;gap:12px}.two{grid-template-columns:1fr 1fr}.field{display:grid;gap:6px}.field label{font-size:13px;color:#b9c9dc}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #29415d;background:#071321;color:#fff;outline:none}.field textarea{min-height:110px;resize:vertical}.note{font-size:12px;color:#8095ad}
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.07);color:#8095ad;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .notice{display:none;margin-top:10px;padding:11px 13px;border-radius:10px;background:#0b2a1b;border:1px solid #205d3d;color:#9ce4b8;font-size:13px}
+    @media(max-width:800px){.links{display:none}.menu{display:block}.heroGrid{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.two{grid-template-columns:1fr}.hero{padding-top:55px}h1{letter-spacing:-2px}.sectionHead{display:block}.sectionHead p{margin-top:8px}}
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="wrap navin">
+  <a class="brand" href="#top"><img src="assets/bytelab-logo.svg" alt="ByteLab"></a>
+  <div class="links">
+    <a href="#courses">Courses</a><a href="./python.html">Python Academy</a><a href="#challenges">Daily Quest</a><a href="#projects">Projects</a><a href="#join">Join</a>
+  </div>
+  <span class="menu">☰</span>
+</div></nav>
+
+<main id="top">
+<section class="hero"><div class="wrap heroGrid">
+  <div>
+    <span class="eyebrow">FREE • STUDENT-LED • ONLINE</span>
+    <h1>Learn. <span class="grad">Build.</span> Grow.</h1>
+    <p class="lead">ByteLab is a student-led computer science community where students learn practical programming, solve daily challenges and build projects together.</p>
+    <div class="actions"><a class="btn primary" href="#courses">Explore Python Foundations</a><a class="btn ghost" href="#join">Join ByteLab</a></div>
+  </div>
+  <div class="heroCard"><div class="code">
+    <div class="comment">// your next project starts here</div>
+    <div><span class="key">course</span> = <span class="str">"Python Foundations"</span></div>
+    <div><span class="key">community</span> = <span class="str">"ByteLab"</span></div>
+    <div><span class="key">challenge</span> = <span class="str">"every day"</span></div>
+    <br><div>print(<span class="str">"Let's build!"</span>)</div>
+  </div></div>
+</div></section>
+
+<section id="courses"><div class="wrap">
+  <div class="sectionHead"><div><h2>Courses</h2><p>Learn Python through structured written lessons, worked examples, practice tasks and projects. Choose the level that matches your experience.</p></div></div>
+  <div class="grid3">
+    <article class="card meet"><span class="tag">WRITTEN • BEGINNER</span><h3>Python Beginner</h3><p>Start from the basics: variables, input/output, conditions, loops, functions, collections and small projects.</p><a class="btn primary" href="./python.html?level=beginner">Start Beginner Course →</a></article>
+    <article class="card"><span class="tag">WRITTEN • INTERMEDIATE</span><h3>Python Intermediate</h3><p>Move beyond the basics with modules, files, exceptions, comprehensions, OOP, iterators, generators and testing.</p><a class="btn primary" href="./python.html?level=intermediate">Start Intermediate Course →</a></article>
+    <article class="card"><span class="tag">WRITTEN • ADVANCED</span><h3>Python Professional</h3><p>An advanced pathway covering project architecture, typing, packaging, testing, APIs, concurrency and professional practices.</p><a class="btn primary" href="./python.html?level=professional">Start Professional Course →</a></article>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <span class="tag">LIVE • COMMUNITY</span><h3>Python Foundations Live Class</h3><p>Written lessons are available anytime. Live sessions are used for explanation, questions and guided practice.</p><a class="btn ghost" href="https://meet.google.com/khs-jree-dey" target="_blank" rel="noopener">Join Live Class ↗</a><p class="note">Class days and times will be announced through ByteLab's Instagram page.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="card" style="background:linear-gradient(135deg,#0d2138,#101d34)">
+    <span class="tag">BYTE LAB PYTHON ACADEMY</span><h2 style="margin:8px 0">Learn by reading, then practice.</h2>
+    <p style="color:var(--muted);max-width:760px">Every written lesson ends with a practice task. You can use a local Python installation, an IDE such as PyCharm, or another Python 3 environment. ByteLab's browser-based coding editor can be added later; the course does not depend on one.</p>
+    <a class="btn primary" href="./python.html">Open Python Academy →</a>
+  </div>
+</div></section>
+
+<section id="challenges"><div class="wrap">
+  <div class="sectionHead"><div><h2>Daily Quest</h2><p>A new beginner-friendly coding problem appears automatically each day.</p></div></div>
+  <div class="challenge"><div class="tag" id="qdate"></div><h3 id="qtitle">Today's challenge</h3><p id="qtext"></p><code id="qexample"></code><button class="btn primary" onclick="document.getElementById('challengeForm').scrollIntoView({behavior:'smooth'})">Submit Your Solution</button></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="sectionHead"><div><h2>Build Projects</h2><p>Finish a project, share your work and learn by building something you can show.</p></div></div>
+  <div class="grid3">
+    <article class="card"><span class="tag">BEGINNER</span><h3>Grade Calculator</h3><p>Build a Python program that calculates an average and assigns a grade.</p></article>
+    <article class="card"><span class="tag">BEGINNER</span><h3>Quiz App</h3><p>Create a small quiz with questions, scoring and feedback.</p></article>
+    <article class="card"><span class="tag">WEB</span><h3>Student Website</h3><p>Design a simple personal or school website and publish it.</p></article>
+  </div>
+</div></section>
+
+
+
+<section id="join"><div class="wrap">
+  <div class="sectionHead"><div><h2>Join ByteLab</h2><p>Register for the community and choose whether you want to enroll in Python Foundations.</p></div></div>
+  <div class="card" id="enroll">
+    <form id="regForm">
+      <div class="two" style="display:grid;gap:12px">
+        <div class="field"><label>Name</label><input id="name" required></div>
+        <div class="field"><label>Email</label><input id="email" type="email" required></div>
+      </div>
+      <div class="field"><label>Course</label><select id="course"><option>Python Foundations</option><option>Community only</option></select></div>
+      <button class="btn primary" type="submit">Register</button>
+      <div class="notice" id="regNotice"></div>
+      <div class="note">Your registration is sent securely to ByteLab's registration sheet.</div>
+    </form>
+  </div>
+  <div class="card" style="margin-top:18px" id="challengeForm">
+    <h3>Submit a Project or Challenge</h3>
+    <form id="subForm">
+      <div class="two" style="display:grid;gap:12px">
+        <div class="field"><label>Name</label><input id="sname" required></div>
+        <div class="field"><label>Type</label><select id="stype"><option>Daily Quest</option><option>Project</option></select></div>
+      </div>
+      <div class="field"><label>GitHub / project link</label><input id="slink" type="url" placeholder="https://github.com/..."></div>
+      <button class="btn primary" type="submit">Submit Work</button>
+      <div class="notice" id="subNotice"></div>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap foot"><span>© <span id="year"></span> ByteLab</span><span>Learn • Build • Grow</span></div></footer>
+
+<script>
+const challenges=[
+["Python Basics","Ask the user for their name and print a friendly greeting.","Input: Afnan → Output: Hello, Afnan!"],
+["Even or Odd","Write a program that checks whether a number entered by the user is even or odd.","Input: 8 → Output: Even"],
+["Sum to N","Ask for a positive integer n and print the sum of all integers from 1 to n.","Input: 5 → Output: 15"],
+["Count Vowels","Count how many vowels appear in a word or sentence.","Input: ByteLab → Output: 2"],
+["Largest Number","Given three numbers, print the largest one.","Input: 4, 9, 6 → Output: 9"],
+["Simple Calculator","Create a calculator that can add, subtract, multiply or divide two numbers.","Input: 8 × 3 → Output: 24"],
+["Multiples","Print the first 10 multiples of a number entered by the user.","Input: 4 → 4, 8, 12, ..."]
+];
+const day=Math.floor(Date.now()/86400000), q=challenges[day%challenges.length];
+document.getElementById("qdate").textContent="DAILY QUEST • "+new Date().toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+document.getElementById("qtitle").textContent=q[0];
+document.getElementById("qtext").textContent=q[1];
+document.getElementById("qexample").textContent=q[2];
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// ByteLab data endpoint. After deploying the included Google Apps Script,
+// paste its Web App URL between the quotes below.
+const BYTE_LAB_ENDPOINT = "https://script.google.com/macros/s/AKfycbwJbCbUt1K5G5sX26Ak_NhIem0uoOxpdsyflVU4sqOrE9TdhXRr42_nq2g9mDIxdnej/exec";
+
+function showNotice(id, message, ok=false){
+  const x=document.getElementById(id);
+  x.style.display="block";
+  x.textContent=message;
+  x.classList.toggle("success", ok);
+}
+
+async function sendToByteLab(payload){
+  if(!BYTE_LAB_ENDPOINT || BYTE_LAB_ENDPOINT.includes("PASTE_YOUR")){
+    throw new Error("ByteLab registration endpoint has not been connected yet.");
+  }
+  await fetch(BYTE_LAB_ENDPOINT, {
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(payload)
+  });
+}
+
+document.getElementById("regForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const button=e.target.querySelector('button[type="submit"]');
+  button.disabled=true;
+  showNotice("regNotice","Sending registration…");
+  try{
+    await sendToByteLab({
+      type:"registration",
+      name:document.getElementById("name").value.trim(),
+      email:document.getElementById("email").value.trim(),
+      course:document.getElementById("course").value,
+      timestamp:new Date().toISOString()
+    });
+    showNotice("regNotice","Registration submitted successfully. Welcome to ByteLab!",true);
+    e.target.reset();
+  }catch(err){
+    showNotice("regNotice","Registration could not be submitted yet. Please try again in a moment.");
+  }finally{button.disabled=false;}
+});
+
+document.getElementById("subForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const button=e.target.querySelector('button[type="submit"]');
+  button.disabled=true;
+  showNotice("subNotice","Sending submission…");
+  try{
+    await sendToByteLab({
+      type:"submission",
+      name:document.getElementById("sname").value.trim(),
+      submissionType:document.getElementById("stype").value,
+      link:document.getElementById("slink").value.trim(),
+      timestamp:new Date().toISOString()
+    });
+    showNotice("subNotice","Submission sent successfully. Great work!",true);
+    e.target.reset();
+  }catch(err){
+    showNotice("subNotice","Submission could not be sent yet. Please try again in a moment.");
+  }finally{button.disabled=false;}
+});
+</script>
+
+</body>
+</html>
