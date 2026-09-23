@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ByteLab Learn — Python</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--tx:#e6edf3;--mu:#8b949e;--ac:#3fb950;--bad:#f85149}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+main{max-width:860px;margin:auto;padding:20px}a{color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+button{font:inherit;cursor:pointer;background:var(--ac);color:#04260f;border:0;border-radius:8px;padding:8px 14px;font-weight:600}
+button.ghost{background:none;color:var(--tx);border:1px solid var(--line)}
+button:disabled{opacity:.5;cursor:default}.soon{opacity:.55}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;background:none;color:var(--tx);border:1px solid var(--line);font-weight:400}
+.opt.ok{border-color:var(--ac);background:#12331d}.opt.bad{border-color:var(--bad)}
+pre,textarea{background:#010409;border:1px solid var(--line);border-radius:8px;padding:10px;font:14px/1.5 ui-monospace,Consolas,monospace;color:var(--tx);width:100%;overflow-x:auto}
+textarea{min-height:150px;resize:vertical}code{background:#010409;padding:1px 5px;border-radius:4px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.done{color:var(--ac)}
+</style></head><body><main id="app"></main>
+<script>
+const W=[
+{t:"Getting Started: print, variables, types",
+b:`<p>Python runs instructions one line at a time. <code>print()</code> shows output. A <b>variable</b> is a name that refers to a value, created with <code>=</code>. Common types: <code>int</code> (whole numbers), <code>float</code> (decimals), <code>str</code> (text), <code>bool</code> (<code>True</code>/<code>False</code>). Use <code>type(x)</code> to check. Lines starting with <code>#</code> are comments and are ignored.</p>`,
+c:`name = "Ali"   # str
+age = 15       # int
+height = 1.65  # float
+print("Hello,", name)
+print(type(age), type(height))`,
+q:[{q:"Which line creates a variable?",o:["print(x)","x = 5","5 = x","# x = 5"],a:1},{q:"What type is 3.14?",o:["int","str","float","bool"],a:2}]},
+{t:"Input, Operators and Strings",
+b:`<p><code>input()</code> reads text from the user and <b>always returns a str</b>, so convert with <code>int()</code> or <code>float()</code> for maths. Operators: <code>+ - * /</code> (<code>/</code> always gives a float), <code>//</code> floor division, <code>%</code> remainder, <code>**</code> power. Build text with f-strings: <code>f"Hi {name}"</code>.</p>`,
+c:`a = 7
+b = 2
+print(a / b, a // b, a % b, a ** b)
+name = "Sara"
+print(f"Hello {name}, 7 // 2 = {a // b}")`,
+q:[{q:"What is 7 // 2?",o:["3.5","3","4","1"],a:1},{q:"What type does input() return?",o:["int","float","str","It depends on what is typed"],a:2}]},
+{t:"Making Decisions: if / elif / else",
+b:`<p>Conditions choose which code runs. Comparison operators: <code>==</code> (equal), <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. Combine with <code>and</code>, <code>or</code>, <code>not</code>. Indentation (usually 4 spaces) marks what belongs inside the block. Note: <code>=</code> assigns, <code>==</code> compares.</p>`,
+c:`marks = 72
+if marks >= 80:
+    print("A")
+elif marks >= 60:
+    print("B")
+else:
+    print("Keep practising")`,
+q:[{q:"Which operator checks equality?",o:["=","==","=>","!"],a:1},{q:"With marks = 72, the example above prints:",o:["A","B","Keep practising","Nothing"],a:1}]},
+{t:"Loops: for and while",
+b:`<p>A <code>for</code> loop repeats over a sequence. <code>range(n)</code> gives 0 up to <b>n-1</b>; <code>range(1, 6)</code> gives 1 to 5. A <code>while</code> loop repeats while its condition is True, so make sure something inside changes it or it will run forever. <code>break</code> exits a loop early.</p>`,
+c:`for i in range(1, 6):
+    print(i)
+
+count = 3
+while count > 0:
+    print("Countdown", count)
+    count -= 1`,
+q:[{q:"What does range(3) produce?",o:["1, 2, 3","0, 1, 2","0, 1, 2, 3","1, 2"],a:1},{q:"A while loop stops when...",o:["It has run 10 times","Its condition becomes False","Python gets bored","It reaches the last line"],a:1}]},
+{t:"Lists and Dictionaries",
+b:`<p>A <b>list</b> stores ordered items: <code>[10, 20, 30]</code>. Indexing starts at 0, so <code>nums[0]</code> is 10. Use <code>append()</code> to add, <code>len()</code> for size. A <b>dictionary</b> stores key-value pairs: <code>{"name": "Ali"}</code>, read with <code>d["name"]</code>.</p>`,
+c:`nums = [10, 20, 30]
+nums.append(40)
+print(nums[0], len(nums))
+
+student = {"name": "Ali", "grade": "A"}
+print(student["name"])
+for n in nums:
+    print(n)`,
+q:[{q:"Index of the first item in a list?",o:["1","0","-1","first"],a:1},{q:"How do you read the value for key 'name' in dict d?",o:["d.name","d(name)","d['name']","d{name}"],a:2}]},
+{t:"Functions and Mini Project",
+b:`<p>A function is reusable code defined with <code>def</code>. It can take <b>parameters</b> and send back a result with <code>return</code> (without return, it gives <code>None</code>). <b>Mini project — Grade Calculator:</b> ask for 3 marks, compute the average, print a grade using if/elif/else. Try building it in the editor below!</p>`,
+c:`def average(a, b, c):
+    return (a + b + c) / 3
+
+def grade(avg):
+    if avg >= 80:
+        return "A"
+    elif avg >= 60:
+        return "B"
+    return "C"
+
+avg = average(80, 70, 90)
+print(avg, grade(avg))`,
+q:[{q:"Which keyword sends a value back from a function?",o:["give","return","print","def"],a:1},{q:"What does a function without return give back?",o:["0","An error","None","An empty string"],a:2}]}
+];
+const app=document.getElementById("app");let py=null;
+function load(){try{return JSON.parse(localStorage.getItem("bl_py_beginner"))||{}}catch(e){return{}}}
+function save(p){try{localStorage.setItem("bl_py_beginner",JSON.stringify(p))}catch(e){}}
+function home(){
+ const n=Object.keys(load()).length;
+ app.innerHTML=`<a href="index.html">← Back to ByteLab</a><h1>Python Learning Path</h1><p>Free lessons with a quiz after each one. Your progress is saved in this browser.</p>
+ <div class="grid"><div class="card"><h2>Beginner</h2><p>6 weeks · variables to functions</p><div class="bar"><i style="width:${n/W.length*100}%"></i></div><p>${n}/${W.length} lessons complete</p><button onclick="track()">Open course</button></div>
+ <div class="card soon"><h2>Intermediate</h2><p>Coming soon</p></div><div class="card soon"><h2>Professional</h2><p>Coming soon</p></div></div>`}
+function track(){
+ const p=load(),n=Object.keys(p).length;
+ app.innerHTML=`<a href="#" onclick="home();return false">← All levels</a><h1>Beginner Python</h1><div class="bar"><i style="width:${n/W.length*100}%"></i></div><p>${Math.round(n/W.length*100)}% complete</p>`+
+ W.map((w,i)=>`<div class="card row"><div><b>Week ${i+1} · Lesson ${i+1}</b><br>${w.t}</div><div>${p[i]?'<span class="done">✓ Done</span> ':''}<button onclick="lesson(${i})">${p[i]?"Review":"Start"}</button></div></div>`).join("")}
+function lesson(i){
+ const w=W[i];let ok=0;
+ app.innerHTML=`<a href="#" onclick="track();return false">← Beginner course</a><h1>Week ${i+1}: ${w.t}</h1><div class="card">${w.b}<pre>${w.c.replace(/</g,"&lt;")}</pre></div>
+ <h2>Quiz</h2>`+w.q.map((q,qi)=>`<div class="card"><b>${q.q}</b>`+q.o.map((o,oi)=>`<button class="opt" data-q="${qi}" data-o="${oi}">${o}</button>`).join("")+`</div>`).join("")+
+ `<p id="msg"></p><h2>Try it yourself</h2><textarea id="code" spellcheck="false"></textarea><p><button id="run">▶ Run</button> <button class="ghost" id="ex">Load lesson example</button></p><pre id="out">Output appears here.</pre>
+ <p>${i>0?`<button class="ghost" onclick="lesson(${i-1})">← Previous</button> `:""}${i<W.length-1?`<button class="ghost" onclick="lesson(${i+1})">Next →</button>`:""}</p>`;
+ const code=document.getElementById("code");code.value=w.c;
+ document.getElementById("ex").onclick=()=>code.value=w.c;
+ document.getElementById("run").onclick=run;
+ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+  const q=w.q[b.dataset.q];if(b.classList.contains("ok"))return;
+  if(+b.dataset.o===q.a){b.classList.add("ok");ok++;document.querySelectorAll(`[data-q="${b.dataset.q}"]`).forEach(x=>x.disabled=true);
+   if(ok===w.q.length){const p=load();p[i]=1;save(p);document.getElementById("msg").innerHTML='<span class="done">✓ Lesson complete!</span>'}}
+  else b.classList.add("bad")});
+}
+async function run(){
+ const out=document.getElementById("out"),btn=document.getElementById("run");btn.disabled=true;
+ try{
+  if(!py){out.textContent="Loading Python (first run only)...";
+   await new Promise((r,e)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";s.onload=r;s.onerror=e;document.head.appendChild(s)});
+   py=await loadPyodide()}
+  let text="";py.setStdout({batched:s=>text+=s+"\n"});py.setStderr({batched:s=>text+=s+"\n"});
+  try{await py.runPythonAsync(document.getElementById("code").value)}catch(e){text+=String(e.message).split("\n").slice(-3).join("\n")}
+  out.textContent=text||"(no output)";
+ }catch(e){out.textContent="Could not load Python. Check your internet connection."}
+ btn.disabled=false}
+home();
+</script></body></html>
