@@ -3,155 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ByteLab is a student-led, free programming learning platform with structured Python lessons, coding challenges and projects.">
-<meta name="theme-color" content="#07111f">
 <title>ByteLab — Learn. Build. Grow.</title>
+<meta name="description" content="ByteLab is a student-led computer science learning community with free courses, coding challenges and projects.">
 <link rel="icon" href="assets/bytelab-logo.svg">
+<script src="config.js"></script>
 <style>
-:root{--bg:#07111f;--panel:#0c1a2b;--panel2:#10233a;--text:#f5f9ff;--muted:#9db0c8;--line:#20344d;--a:#36d1dc;--b:#6675ff;--ok:#55d98b;--warn:#ffd166}
+:root{--bg:#07111f;--panel:#0c1a2b;--panel2:#10233a;--text:#f5f9ff;--muted:#9db0c8;--line:#20344d;--a:#36d1dc;--b:#6675ff;--ok:#55d98b;--bad:#ff7070}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#07111f,#091728 55%,#07111f);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
-a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
-.nav{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
-.navin{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand img{height:44px;display:block;max-width:180px}.links{display:flex;gap:20px;align-items:center;font-size:14px;color:#c9d7e8}.links a:hover{color:#fff}.menuBtn{display:none}
-.hero{padding:84px 0 68px}.heroGrid{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid #29415f;border-radius:999px;color:#b8d4f4;background:#0a1727;font-size:13px}
-h1{font-size:clamp(44px,7vw,76px);line-height:1.02;margin:20px 0 18px;letter-spacing:-3px}.grad{background:linear-gradient(100deg,var(--a),#a58cff,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:19px;color:var(--muted);max-width:650px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:11px;border:1px solid #2b4665;font-weight:700;font-size:14px;cursor:pointer}.primary{background:linear-gradient(100deg,#2ccbd6,#6374ff);border:0;color:#fff}.ghost{background:#0b192a;color:#fff}.btn:disabled{opacity:.55;cursor:not-allowed}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.brand img{height:46px;display:block;max-width:180px}.links{display:flex;gap:22px;align-items:center;font-size:14px;color:#c9d7e8}
+.hero{padding:88px 0 72px}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid #29415f;border-radius:999px;color:#b8d4f4;background:#0a1727;font-size:13px}
+h1{font-size:clamp(44px,7vw,78px);line-height:1.02;margin:20px 0 18px;letter-spacing:-3px}.grad{background:linear-gradient(100deg,var(--a),#a58cff,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:19px;color:var(--muted);max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:11px;border:1px solid #2b4665;font-weight:700;font-size:14px;cursor:pointer}.primary{background:linear-gradient(100deg,#2ccbd6,#6374ff);border:0;color:#fff}.ghost{background:#0b192a;color:#fff}
 .heroCard{background:radial-gradient(circle at 20% 10%,#193a59,#0c192a 55%);border:1px solid #24415f;border-radius:24px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#cce8ff;font-size:14px;line-height:1.9}.comment{color:#7892ae}.key{color:#67e3ed}.str{color:#bda8ff}
-section{padding:68px 0}.sectionHead{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:28px}.sectionHead h2{font-size:32px;margin:0}.sectionHead p{color:var(--muted);max-width:650px;margin:0}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:rgba(12,26,43,.88);border:1px solid var(--line);border-radius:18px;padding:22px}.card h3{margin:8px 0}.card p{color:var(--muted);font-size:14px}.tag{font-size:12px;color:#a8c8e9;text-transform:uppercase;letter-spacing:.04em}.meet{border-color:#295e61;background:linear-gradient(135deg,#0c2730,#0c1b2b)}
+section{padding:70px 0}.sectionHead{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:28px}.sectionHead h2{font-size:32px;margin:0}.sectionHead p{color:var(--muted);max-width:610px;margin:0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:rgba(12,26,43,.88);border:1px solid var(--line);border-radius:18px;padding:22px}.card h3{margin:8px 0 8px}.card p{color:var(--muted);font-size:14px}.tag{font-size:12px;color:#a8c8e9}.meet{border-color:#295e61;background:linear-gradient(135deg,#0c2730,#0c1b2b)}
 .challenge{border:1px solid #324a72;background:linear-gradient(135deg,#101e36,#0b1929);border-radius:22px;padding:28px}.challenge code{display:block;background:#07111f;border:1px solid #1c3048;padding:17px;border-radius:12px;margin:16px 0;color:#d8e7f7}
-.project{display:flex;flex-direction:column;min-height:210px}.project .actions{margin-top:auto}.pill{display:inline-block;padding:4px 8px;border:1px solid #2c4664;border-radius:999px;font-size:11px;color:#b8d4f4;margin-right:5px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:#0a1727}.stat strong{display:block;font-size:28px}.stat span{color:var(--muted);font-size:13px}
-form{display:grid;gap:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field label{font-size:13px;color:#b9c9dc}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #29415d;background:#071321;color:#fff;outline:none}.field textarea{min-height:110px;resize:vertical}.note{font-size:12px;color:#8095ad}.notice{display:none;margin-top:10px;padding:11px 13px;border-radius:10px;background:#0b2a1b;border:1px solid #205d3d;color:#9ce4b8;font-size:13px}.notice.error{background:#321316;border-color:#6d252d;color:#ffb4bb}
+form{display:grid;gap:12px}.two{grid-template-columns:1fr 1fr}.field{display:grid;gap:6px}.field label{font-size:13px;color:#b9c9dc}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #29415d;background:#071321;color:#fff;outline:none}.note{font-size:12px;color:#8095ad}
+.notice{display:none;margin-top:10px;padding:11px 13px;border-radius:10px;background:#0b2a1b;border:1px solid #205d3d;color:#9ce4b8;font-size:13px}.notice.bad{background:#321717;border-color:#713232;color:#ffb4b4}
 footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.07);color:#8095ad;font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:800px){.links{display:none}.menuBtn{display:inline-flex}.heroGrid,.grid2,.grid3,.two,.stats{grid-template-columns:1fr}.hero{padding-top:55px}h1{letter-spacing:-2px}.sectionHead{display:block}.sectionHead p{margin-top:8px}.navin{padding:10px 0}}
+@media(max-width:800px){.links{display:none}.heroGrid{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.two{grid-template-columns:1fr}.hero{padding-top:55px}h1{letter-spacing:-2px}.sectionHead{display:block}.sectionHead p{margin-top:8px}}
 </style>
 </head>
 <body>
 <nav class="nav"><div class="wrap navin">
 <a class="brand" href="#top"><img src="assets/bytelab-logo.svg" alt="ByteLab"></a>
-<div class="links">
-<a href="#courses">Courses</a><a href="#challenges">Daily Quest</a><a href="#projects">Projects</a><a href="#feedback">Feedback</a><a href="#join">Join</a>
-</div>
-<button class="menuBtn btn ghost" type="button" onclick="toggleNav()" aria-label="Open navigation">Menu</button>
+<div class="links"><a href="#courses">Courses</a><a href="#challenges">Daily Quest</a><a href="#projects">Projects</a><a href="#join">Join</a></div>
 </div></nav>
 
 <main id="top">
 <section class="hero"><div class="wrap heroGrid">
 <div>
-<span class="eyebrow">FREE • STUDENT-LED • BUILDING IN PUBLIC</span>
+<span class="eyebrow">FREE • STUDENT-LED • ONLINE</span>
 <h1>Learn. <span class="grad">Build.</span> Grow.</h1>
-<p class="lead">ByteLab is a free student-led programming platform where beginners learn Python through structured lessons, practice, daily coding challenges and real projects.</p>
-<div class="actions">
-<a class="btn primary" href="#courses">Start learning</a>
-<a class="btn ghost" href="#projects">See projects</a>
-</div>
+<p class="lead">ByteLab is a student-led computer science community where students learn practical programming, solve daily challenges and build projects together.</p>
+<div class="actions"><button class="btn primary" onclick="startCourse()">Explore Python Foundations</button><a class="btn ghost" href="#join">Join ByteLab</a></div>
 </div>
 <div class="heroCard"><div class="code">
-<div class="comment">// ByteLab learning loop</div>
-<div><span class="key">learn</span> = <span class="str">"concepts"</span></div>
-<div><span class="key">practice</span> = <span class="str">"daily"</span></div>
-<div><span class="key">build</span> = <span class="str">"projects"</span></div>
-<div><span class="key">share</span> = <span class="str">"your work"</span></div>
-<br><div>print(<span class="str">"Let's build!"</span>)</div>
+<div class="comment">// your next project starts here</div>
+<div><span class="key">course</span> = <span class="str">"Python Foundations"</span></div>
+<div><span class="key">community</span> = <span class="str">"ByteLab"</span></div>
+<div><span class="key">challenge</span> = <span class="str">"every day"</span></div><br>
+<div>print(<span class="str">"Let's build!"</span>)</div>
 </div></div>
 </div></section>
 
 <section id="courses"><div class="wrap">
-<div class="sectionHead"><div><h2>Learning paths</h2><p>Start with Python and progress from fundamentals to real software-building skills.</p></div></div>
+<div class="sectionHead"><div><h2>Courses</h2><p>Start with a structured, beginner-friendly pathway and build as you learn.</p></div></div>
 <div class="grid3">
-<article class="card meet">
-<span class="tag">ACTIVE • BEGINNER</span><h3>Python Foundations</h3>
-<p>Variables, input, operators, conditions, loops, functions, lists, dictionaries and files.</p>
-<div class="actions"><a class="btn primary" href="learn.html?course=beginner">Open course</a><a class="btn ghost" href="https://meet.google.com/khs-jree-dey" target="_blank" rel="noopener">Live class ↗</a></div>
-</article>
-<article class="card">
-<span class="tag">ACTIVE • INTERMEDIATE</span><h3>Python Builder</h3>
-<p>Functions in depth, modules, exceptions, files, OOP, APIs and project architecture.</p>
-<div class="actions"><a class="btn primary" href="learn.html?course=intermediate">Open course</a></div>
-</article>
-<article class="card">
-<span class="tag">ROADMAP</span><h3>Advanced Python</h3>
-<p>Planned topics include testing, data processing, algorithms and larger software projects.</p>
-<div class="actions"><a class="btn ghost" href="#join">Get updates</a></div>
-</article>
-</div>
-</div></section>
+<article class="card meet"><span class="tag">LIVE • BEGINNER</span><h3>Python Foundations</h3><p>Variables, conditions, loops, functions and practical mini-projects.</p>
+<a class="btn primary" href="https://meet.google.com/khs-jree-dey" target="_blank" rel="noopener">Join Live Class ↗</a>
+<p class="note">Class days and times will be announced through ByteLab's Instagram page.</p>
+<button class="btn ghost" onclick="startCourse()">Start Python Lessons</button></article>
+<article class="card"><span class="tag">COMING SOON</span><h3>Web Development</h3><p>HTML, CSS and JavaScript through practical website projects.</p></article>
+<article class="card"><span class="tag">COMING SOON</span><h3>Build Your First App</h3><p>Turn an idea into a small, usable software project.</p></article>
+</div></div></section>
 
 <section id="challenges"><div class="wrap">
-<div class="sectionHead"><div><h2>Daily Quest</h2><p>A rotating coding challenge gives learners a small problem to solve every day.</p></div></div>
-<div class="challenge">
-<div class="tag" id="qdate"></div><h3 id="qtitle">Today's challenge</h3><p id="qtext"></p><code id="qexample"></code>
-<div class="actions"><a class="btn primary" href="learn.html?challenge=today">Solve in ByteLab</a><button class="btn ghost" onclick="document.getElementById('challengeForm').scrollIntoView({behavior:'smooth'})">Submit work</button></div>
-</div>
+<div class="sectionHead"><div><h2>Daily Quest</h2><p>A new beginner-friendly coding problem appears automatically each day.</p></div></div>
+<div class="challenge"><div class="tag" id="qdate"></div><h3 id="qtitle">Today's challenge</h3><p id="qtext"></p><code id="qexample"></code><button class="btn primary" onclick="document.getElementById('challengeForm').scrollIntoView({behavior:'smooth'})">Submit Your Solution</button></div>
 </div></section>
 
 <section id="projects"><div class="wrap">
-<div class="sectionHead"><div><h2>Build projects</h2><p>Learning becomes meaningful when students turn concepts into working software.</p></div></div>
+<div class="sectionHead"><div><h2>Build Projects</h2><p>Finish a project, share your work and learn by building something you can show.</p></div></div>
 <div class="grid3">
-<article class="card project"><span class="tag">BEGINNER • PYTHON</span><h3>Grade Calculator</h3><p>Use input, functions and conditions to calculate averages and assign grades.</p><div><span class="pill">Functions</span><span class="pill">if/elif</span><span class="pill">Input</span></div><div class="actions"><a class="btn ghost" href="projects.html#grade-calculator">View brief</a></div></article>
-<article class="card project"><span class="tag">BEGINNER • PYTHON</span><h3>Quiz Game</h3><p>Build a quiz with questions, scoring, validation and feedback.</p><div><span class="pill">Lists</span><span class="pill">Loops</span><span class="pill">Logic</span></div><div class="actions"><a class="btn ghost" href="projects.html#quiz-game">View brief</a></div></article>
-<article class="card project"><span class="tag">WEB • JAVASCRIPT</span><h3>Student Portfolio</h3><p>Create and deploy a responsive personal portfolio with projects and an about section.</p><div><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JS</span></div><div class="actions"><a class="btn ghost" href="projects.html#portfolio">View brief</a></div></article>
-</div>
-<div class="actions"><a class="btn primary" href="projects.html">Open project library →</a></div>
-</div></section>
-
-<section><div class="wrap">
-<div class="sectionHead"><div><h2>Your progress</h2><p>Progress is saved locally in your browser. No public leaderboard and no public statistics.</p></div></div>
-<div class="stats">
-<div class="stat"><strong id="lessonCount">0</strong><span>Python lessons completed</span></div>
-<div class="stat"><strong id="questCount">0</strong><span>Daily quests attempted</span></div>
-<div class="stat"><strong id="projectCount">0</strong><span>Project briefs opened</span></div>
-</div>
-</div></section>
-
-<section id="feedback"><div class="wrap">
-<div class="sectionHead"><div><h2>Help Improve ByteLab</h2><p>Your feedback helps us fix problems, improve lessons and decide what to build next.</p></div></div>
-<div class="grid2">
-<div class="card">
-<span class="tag">SUGGESTION</span><h3>Have an idea?</h3>
-<p>Suggest a new course, coding challenge, project, feature or improvement. Your suggestion will be tracked publicly so we can update ByteLab as it grows.</p>
-<div class="actions"><a class="btn primary" href="https://github.com/syedmuhammadafnanhassan/ByteLab/issues/new?title=Feature%20suggestion%3A%20&body=What%20would%20you%20like%20ByteLab%20to%20add%20or%20improve%3F%0A%0AWhy%20would%20this%20help%20learners%3F%0A%0AAny%20examples%20or%20details%3F" target="_blank" rel="noopener">Suggest an improvement</a></div>
-</div>
-<div class="card">
-<span class="tag">BUG REPORT</span><h3>Found something broken?</h3>
-<p>Tell us what happened, which page you were using and what you expected to happen. This makes it easier to fix ByteLab quickly.</p>
-<div class="actions"><a class="btn ghost" href="https://github.com/syedmuhammadafnanhassan/ByteLab/issues/new?title=Bug%20report%3A%20&body=Page%20or%20feature%3A%20%0A%0AWhat%20happened%3F%20%0A%0AWhat%20did%20you%20expect%3F%20%0A%0ADevice%2Fbrowser%20(optional)%3A%20" target="_blank" rel="noopener">Report a bug</a></div>
-</div>
-</div>
-<div class="note" style="margin-top:14px">You can submit feedback without sharing your email. GitHub may require you to sign in to create an issue.</div>
-</div></section>
+<article class="card"><span class="tag">BEGINNER</span><h3>Grade Calculator</h3><p>Build a Python program that calculates an average and assigns a grade.</p></article>
+<article class="card"><span class="tag">BEGINNER</span><h3>Quiz App</h3><p>Create a small quiz with questions, scoring and feedback.</p></article>
+<article class="card"><span class="tag">WEB</span><h3>Student Website</h3><p>Design a simple personal or school website and publish it.</p></article>
+</div></div></section>
 
 <section id="join"><div class="wrap">
-<div class="sectionHead"><div><h2>Join ByteLab</h2><p>Register for learning updates or enroll in Python Foundations.</p></div></div>
-<div class="grid2">
-<div class="card">
+<div class="sectionHead"><div><h2>Join ByteLab</h2><p>Registration is optional. You can start learning without creating an account. If you register, your learner record helps ByteLab measure participation privately.</p></div></div>
+<div class="card" id="enroll">
 <form id="regForm">
-<div class="two"><div class="field"><label for="name">Name</label><input id="name" required autocomplete="name"></div><div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="email"></div></div>
-<div class="field"><label for="course">Path</label><select id="course"><option>Python Foundations</option><option>ByteLab community updates</option></select></div>
-<button class="btn primary" type="submit">Register</button>
+<div class="two" style="display:grid;gap:12px">
+<div class="field"><label>Name</label><input id="name" required autocomplete="name"></div>
+<div class="field"><label>Email</label><input id="email" type="email" required autocomplete="email"></div>
+</div>
+<div class="field"><label>Course</label><select id="course"><option>Python Foundations</option><option>Community only</option></select></div>
+<button class="btn primary" type="submit">Register for ByteLab</button>
 <div class="notice" id="regNotice"></div>
-<div class="note">Registration is sent to the ByteLab registration sheet. Your email is not displayed publicly.</div>
+<div class="note">Your email is used only for your optional learner registration. Visitor analytics use a random browser ID and are kept out of the public website.</div>
 </form>
 </div>
-<div class="card" id="challengeForm">
-<h3>Submit your work</h3>
-<p class="note">Share a GitHub or project link for a Daily Quest or ByteLab project.</p>
+<div class="card" style="margin-top:18px" id="challengeForm">
+<h3>Submit a Project or Challenge</h3>
 <form id="subForm">
-<div class="two"><div class="field"><label for="sname">Name</label><input id="sname" required></div><div class="field"><label for="stype">Type</label><select id="stype"><option>Daily Quest</option><option>Project</option></select></div></div>
-<div class="field"><label for="slink">GitHub / project link</label><input id="slink" type="url" required placeholder="https://github.com/..."></div>
-<div class="field"><label for="smessage">Optional note</label><textarea id="smessage" placeholder="What did you build or learn?"></textarea></div>
-<button class="btn primary" type="submit">Submit work</button>
-<div class="notice" id="subNotice"></div>
-</form>
+<div class="two" style="display:grid;gap:12px">
+<div class="field"><label>Name</label><input id="sname" required></div>
+<div class="field"><label>Type</label><select id="stype"><option>Daily Quest</option><option>Project</option></select></div>
 </div>
-</div>
+<div class="field"><label>GitHub / project link</label><input id="slink" type="url" placeholder="https://github.com/..."></div>
+<button class="btn primary" type="submit">Submit Work</button><div class="notice" id="subNotice"></div>
+</form></div>
 </div></section>
 </main>
-
-<footer><div class="wrap foot"><span>© <span id="year"></span> ByteLab</span><span>Learn • Build • Grow • <a href="README.md">Open-source project</a></span></div></footer>
+<footer><div class="wrap foot"><span>© <span id="year"></span> ByteLab</span><span>Learn • Build • Grow</span></div></footer>
 
 <script>
+const ENDPOINT=(window.BYTE_LAB_CONFIG||{}).endpoint||"";
+const GA_ID=(window.BYTE_LAB_CONFIG||{}).gaMeasurementId||"";
 const challenges=[
 ["Python Basics","Ask the user for their name and print a friendly greeting.","Input: Afnan → Output: Hello, Afnan!"],
 ["Even or Odd","Write a program that checks whether a number entered by the user is even or odd.","Input: 8 → Output: Even"],
@@ -159,43 +109,21 @@ const challenges=[
 ["Count Vowels","Count how many vowels appear in a word or sentence.","Input: ByteLab → Output: 2"],
 ["Largest Number","Given three numbers, print the largest one.","Input: 4, 9, 6 → Output: 9"],
 ["Simple Calculator","Create a calculator that can add, subtract, multiply or divide two numbers.","Input: 8 × 3 → Output: 24"],
-["Multiples","Print the first 10 multiples of a number entered by the user.","Input: 4 → 4, 8, 12, ..."],
-["Temperature Converter","Convert Celsius to Fahrenheit using a function.","Input: 25 → Output: 77°F"],
-["Word Counter","Ask for a sentence and count how many words it contains.","Input: I like Python → Output: 3"],
-["Palindrome Check","Determine whether a word reads the same forwards and backwards.","Input: level → Output: Palindrome"]
+["Multiples","Print the first 10 multiples of a number entered by the user.","Input: 4 → 4, 8, 12, ..."]
 ];
-const day=Math.floor(Date.now()/86400000), q=challenges[day%challenges.length];
+const day=Math.floor(Date.now()/86400000),q=challenges[day%challenges.length];
 document.getElementById("qdate").textContent="DAILY QUEST • "+new Date().toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
-document.getElementById("qtitle").textContent=q[0];document.getElementById("qtext").textContent=q[1];document.getElementById("qexample").textContent=q[2];
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("qtitle").textContent=q[0];document.getElementById("qtext").textContent=q[1];document.getElementById("qexample").textContent=q[2];document.getElementById("year").textContent=new Date().getFullYear();
 
-const BYTE_LAB_ENDPOINT="https://script.google.com/macros/s/AKfycbwJbCbUt1K5G5sX26Ak_NhIzem0uoOxpdsyflVU4sqOrE9TdhXRr42_nq2g9mDIxdnej/exec";
-
-function notice(id,msg,error=false){const x=document.getElementById(id);x.textContent=msg;x.style.display="block";x.classList.toggle("error",error)}
-async function send(payload){
-  if(!BYTE_LAB_ENDPOINT) throw new Error("Endpoint missing");
-  await fetch(BYTE_LAB_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
-}
-document.getElementById("regForm").addEventListener("submit",async e=>{
- e.preventDefault();const b=e.target.querySelector("button");b.disabled=true;notice("regNotice","Submitting…");
- try{await send({type:"registration",name:name.value.trim(),email:email.value.trim(),course:course.value,timestamp:new Date().toISOString()});notice("regNotice","Registration submitted successfully. Welcome to ByteLab!");e.target.reset()}
- catch(err){notice("regNotice","We could not submit the registration. Please try again.",true)}finally{b.disabled=false}
-});
-document.getElementById("subForm").addEventListener("submit",async e=>{
- e.preventDefault();const b=e.target.querySelector("button");b.disabled=true;notice("subNotice","Submitting…");
- try{await send({type:"submission",name:sname.value.trim(),submissionType:stype.value,link:slink.value.trim(),message:smessage.value.trim(),timestamp:new Date().toISOString()});notice("subNotice","Submission sent successfully. Great work!");e.target.reset()}
- catch(err){notice("subNotice","We could not submit your work. Please try again.",true)}finally{b.disabled=false}
-});
-function toggleNav(){document.querySelector(".links").style.display=document.querySelector(".links").style.display==="flex"?"none":"flex"}
-function refreshStats(){
- try{
-  const p=JSON.parse(localStorage.getItem("bl_py_progress")||"[]");
-  document.getElementById("lessonCount").textContent=p.length;
-  document.getElementById("questCount").textContent=localStorage.getItem("bl_quest_attempts")||0;
-  document.getElementById("projectCount").textContent=localStorage.getItem("bl_projects_opened")||0;
- }catch(e){}
-}
-refreshStats();
+function visitorId(){let id=localStorage.getItem("bl_visitor_id");if(!id){id="VIS-"+crypto.randomUUID().replaceAll("-","").slice(0,12).toUpperCase();localStorage.setItem("bl_visitor_id",id)}return id}
+function learnerId(){return localStorage.getItem("bl_learner_id")||""}
+function loadGA(){const id=(window.BYTE_LAB_CONFIG||{}).gaMeasurementId||"";if(!id||id==="G-REPLACE_ME")return;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};const s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+encodeURIComponent(id);document.head.appendChild(s);gtag("js",new Date());gtag("config",id)}
+function track(name,params={}){try{if(window.gtag)gtag("event",name,params)}catch(e){};const endpoint=(window.BYTE_LAB_CONFIG||{}).endpoint||"";if(endpoint){try{fetch(endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"event",event:name,visitorId:visitorId(),learnerId:learnerId(),...params,timestamp:new Date().toISOString()})})}catch(e){}}}
+function notice(msg,bad=false){const x=document.getElementById("regNotice");x.style.display="block";x.className="notice"+(bad?" bad":"");x.textContent=msg}
+function startCourse(){track("course_start_click",{course:"beginner"});location.href="learn.html"}
+document.getElementById("regForm").addEventListener("submit",async e=>{e.preventDefault();const name=document.getElementById("name").value.trim(),email=document.getElementById("email").value.trim().toLowerCase(),course=document.getElementById("course").value,btn=e.target.querySelector("button[type=submit]");if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){notice("Please enter your name and a valid email address.",true);return}btn.disabled=true;notice("Registering…");try{const endpoint=(window.BYTE_LAB_CONFIG||{}).endpoint||"";if(endpoint)await fetch(endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"registration",name,email,course,visitorId:visitorId(),timestamp:new Date().toISOString()})});const id="BL-"+crypto.randomUUID().replaceAll("-","").slice(0,10).toUpperCase();localStorage.setItem("bl_learner_id",id);localStorage.setItem("bl_learner_email",email);track("sign_up",{method:"simple_registration",course});notice("Registration complete. You can start learning now!");setTimeout(()=>location.href="learn.html",500)}catch(err){notice("Registration could not be completed. You can still start learning without registering.",true)}finally{btn.disabled=false}});
+document.getElementById("subForm").addEventListener("submit",async e=>{e.preventDefault();const button=e.target.querySelector("button[type=submit]");button.disabled=true;try{const endpoint=(window.BYTE_LAB_CONFIG||{}).endpoint||"";if(endpoint)await fetch(endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"submission",name:document.getElementById("sname").value.trim(),submissionType:document.getElementById("stype").value,link:document.getElementById("slink").value.trim(),learnerId:learnerId(),visitorId:visitorId(),timestamp:new Date().toISOString()})});document.getElementById("subNotice").style.display="block";document.getElementById("subNotice").textContent="Submission sent successfully. Great work!";track("project_or_quest_submission",{submissionType:document.getElementById("stype").value});e.target.reset()}catch(err){document.getElementById("subNotice").style.display="block";document.getElementById("subNotice").textContent="Submission could not be sent yet. Please try again."}finally{button.disabled=false}});
+loadGA();visitorId();track("site_visit",{page:"home"});
 </script>
 </body>
 </html>
