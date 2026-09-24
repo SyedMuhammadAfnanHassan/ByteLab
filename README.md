@@ -1,45 +1,52 @@
-# ByteLab Website
+# ByteLab
 
-Public static website for ByteLab.
+ByteLab is a free, student-led programming learning platform focused on learning by building.
 
-## Google Sheet registration/submission setup
+## Current MVP
 
-The website is prepared to send registrations and project/daily-quest submissions to a Google Apps Script Web App. The final connection requires a Google account owned/controlled by the ByteLab owner.
+- Python Foundations course
+- Python Builder (intermediate) course
+- Lesson quizzes
+- Browser-based Python practice using Pyodide
+- Local progress tracking
+- Daily coding challenges
+- Project library
+- Student registration
+- Project/challenge submission
+- GitHub Pages deployment
 
-### 1. Create the Google Sheet
-Create a new Google Sheet, for example `ByteLab Responses`. Copy its spreadsheet ID from the URL:
+## Technology
 
-`https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit`
+- HTML
+- CSS
+- JavaScript
+- GitHub Pages
+- Google Apps Script for registration/submissions
+- Pyodide for in-browser Python execution
 
-### 2. Create the Apps Script
-In the Sheet, open **Extensions -> Apps Script**. Replace the default code with the contents of `google_apps_script.gs`.
+## Repository structure
 
-Replace:
+- `index.html` — landing page, daily quest, registration
+- `learn.html` — interactive Python courses
+- `projects.html` — project briefs
+- `assets/` — branding assets
 
-`PASTE_YOUR_GOOGLE_SHEET_ID_HERE`
+## Development principles
 
-with your real spreadsheet ID.
+ByteLab is intended to be a real learning project. Features should be tested with real students, and impact statistics should only be reported when they are actually measured.
 
-### 3. Deploy the Web App
-In Apps Script choose **Deploy -> New deployment** and select **Web app**.
+## Roadmap
 
-Use:
-- Execute as: **Me**
-- Who has access: **Anyone**
+1. Expand the Python lesson bank.
+2. Add more automated practice tests.
+3. Add beginner/intermediate project submission workflows.
+4. Collect learner feedback.
+5. Improve accessibility and mobile UX.
+6. Add carefully reviewed open-source contributions from the community.
 
-Deploy and copy the generated **Web app URL**.
 
-### 4. Connect the website
-Open `index.html` and replace:
+## Feedback & suggestions
 
-`PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE`
+ByteLab now uses GitHub Issues as a simple public feedback and bug-report system. Visitors can use the **Help Improve ByteLab** section on the homepage to suggest features or report bugs. Each item can be discussed, labeled and closed when the improvement is completed.
 
-with the Web App URL.
-
-Then commit/upload the updated `index.html` to GitHub Pages.
-
-The public website will then send:
-- registrations to the **Registrations** sheet
-- project/Daily Quest submissions to the **Submissions** sheet
-
-No public statistics are shown on the website.
+To keep the feedback system working, make sure **Issues** are enabled in the repository under **Settings → General → Features → Issues**.
