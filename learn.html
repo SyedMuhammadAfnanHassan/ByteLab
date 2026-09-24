@@ -1,270 +1,182 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ByteLab Learn — Python</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ByteLab Learning Lab</title><link rel="icon" href="assets/bytelab-logo.svg">
 <style>
-:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--tx:#e6edf3;--mu:#8b949e;--ac:#3fb950;--bad:#f85149}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7}
-main{max-width:860px;margin:auto;padding:20px}a{color:var(--ac)}h1,h2,h3{line-height:1.3}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-button{font:inherit;cursor:pointer;background:var(--ac);color:#04260f;border:0;border-radius:8px;padding:8px 14px;font-weight:600}
-button.ghost{background:none;color:var(--tx);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:default}.soon{opacity:.55}
-.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
-.opt{display:block;width:100%;text-align:left;margin:6px 0;background:none;color:var(--tx);border:1px solid var(--line);font-weight:400}
-.opt.ok{border-color:var(--ac);background:#12331d}.opt.bad{border-color:var(--bad)}
-pre,textarea{background:#010409;border:1px solid var(--line);border-radius:8px;padding:10px;font:14px/1.5 ui-monospace,Consolas,monospace;color:var(--tx);width:100%;overflow-x:auto}
-textarea{min-height:170px;resize:vertical}code{background:#010409;padding:1px 5px;border-radius:4px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.done{color:var(--ac)}
-.tip{border-left:4px solid var(--bad);padding:6px 12px;background:#1c1214;border-radius:6px}
-</style></head><body><main id="app"></main>
+:root{--bg:#07111f;--card:#0c1a2b;--line:#20344d;--tx:#f5f9ff;--mu:#9db0c8;--a:#36d1dc;--b:#6675ff;--ok:#55d98b;--bad:#ff707b}
+*{box-sizing:border-box}body{margin:0;background:#07111f;color:var(--tx);font-family:Inter,system-ui,sans-serif;line-height:1.6}main{width:min(1000px,92%);margin:auto;padding:30px 0 70px}a{color:#8ee8ee}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.brand{font-weight:800;font-size:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.bar{height:10px;background:#17283d;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b))}.btn{font:inherit;cursor:pointer;border:1px solid #2b4665;background:#0b192a;color:#fff;border-radius:10px;padding:10px 14px;font-weight:700}.primary{background:linear-gradient(100deg,#2ccbd6,#6374ff);border:0}.btn:disabled{opacity:.55}.lessonRow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.muted{color:var(--mu)}.done{color:var(--ok);font-weight:700}.bad{color:var(--bad)}.quizOption{display:block;width:100%;text-align:left;margin:8px 0;background:#091625}.quizOption.correct{border-color:var(--ok);background:#0b2a1b}.quizOption.wrong{border-color:var(--bad);background:#321316}pre,textarea{width:100%;background:#030911;color:#eaf4ff;border:1px solid var(--line);border-radius:10px;padding:14px;font:14px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}textarea{min-height:210px;resize:vertical}.meta{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid #2b4665;padding:4px 8px;border-radius:999px;color:#b8d4f4;font-size:12px}.lessonNav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.tip{border-left:3px solid var(--a);padding-left:14px;color:#cfe1f3}.hidden{display:none}@media(max-width:800px){.grid{grid-template-columns:1fr}.lessonNav{flex-direction:column}}
+</style>
+</head>
+<body><main id="app"></main>
 <script>
-const T={
-beginner:{name:"Beginner",sub:"6 weeks · variables to functions",L:[
-{t:"Getting Started: print, variables, types",
-b:`<p>A program is a list of instructions the computer follows from top to bottom. Python is popular for beginners because its code reads almost like English. The <code>print()</code> function displays output on the screen.</p>
-<p>A <b>variable</b> is a name that points to a value. You create one with <code>=</code>, which means "store this value", not "equals" in the maths sense. Python has four basic types: <code>int</code> (whole numbers like 15), <code>float</code> (decimals like 1.65), <code>str</code> (text in quotes) and <code>bool</code> (<code>True</code> or <code>False</code>). You can check a type with <code>type()</code>.</p>
-<p>Variable names may contain letters, digits and underscores, cannot start with a digit, and cannot contain spaces. A line starting with <code>#</code> is a comment: Python ignores it, so use comments to explain your code to humans.</p>`,
-c:`name = "Ali"   # str
-age = 15       # int
-height = 1.65  # float
-is_student = True  # bool
+const BEGINNER=[
+{t:"Getting Started: print, variables and types",b:`<p>Python programs are instructions executed by the interpreter. <code>print()</code> displays output. A variable gives a name to a value using <code>=</code>. Common types include <code>int</code>, <code>float</code>, <code>str</code> and <code>bool</code>.</p><p class="tip">Remember: <code>=</code> assigns a value. It does not ask whether two values are equal.</p>`,c:`name = "Afnan"
+age = 17
+height = 1.75
 print("Hello,", name)
-print(type(age), type(height), type(is_student))
-age = age + 1  # variables can change
-print(age)`,
-m:`Names are case-sensitive: <code>Age</code> and <code>age</code> are two different variables. Also, text needs quotes: <code>print(Hello)</code> is an error, <code>print("Hello")</code> works.`,
-q:[{q:"Which is a valid variable name?",o:["2names","my name","my_name","my-name"],a:2},{q:"What is type(True)?",o:["int","bool","str","float"],a:1},{q:"What does a # do in Python?",o:["Prints text","Starts a comment Python ignores","Ends the program","Makes a list"],a:1}]},
-{t:"Input, Operators and Strings",
-b:`<p><code>input()</code> pauses the program and reads what the user types. It <b>always returns a string</b>, even if the user types a number, so convert with <code>int()</code> or <code>float()</code> before doing maths.</p>
-<p>Arithmetic operators: <code>+</code> add, <code>-</code> subtract, <code>*</code> multiply, <code>/</code> divide (always gives a float), <code>//</code> floor division (drops the decimal part), <code>%</code> remainder, <code>**</code> power. Python follows the usual order of operations, and brackets change it.</p>
-<p>Strings can be joined with <code>+</code>, repeated with <code>*</code>, measured with <code>len()</code>, and changed with methods such as <code>.upper()</code>, <code>.lower()</code> and <code>.strip()</code>. The cleanest way to mix text and values is an <b>f-string</b>: put <code>f</code> before the quotes and write variables inside <code>{}</code>.</p>`,
-c:`a = 7
-b = 2
-print(a + b, a - b, a * b)
-print(a / b, a // b, a % b, a ** b)
-word = "python"
-print(word.upper(), len(word), word * 2)
-name = "Sara"
-print(f"Hello {name}, {a} divided by {b} is {a / b}")
-# With input (a pop-up will ask you):
-# age = int(input("Age? "))`,
-m:`<code>"5" + 3</code> causes an error because you cannot add text and a number. Convert first: <code>int("5") + 3</code>.`,
-q:[{q:"What is 7 // 2?",o:["3.5","3","4","1"],a:1},{q:"What type does input() return?",o:["int","float","str","It depends on what is typed"],a:2},{q:"What is 10 % 3?",o:["3","1","0","3.33"],a:1}]},
-{t:"Making Decisions: if / elif / else",
-b:`<p>Programs need to make choices. An <code>if</code> statement runs its block only when a condition is <code>True</code>. Add <code>elif</code> (else if) for more cases and <code>else</code> for everything left over. Python checks them in order and runs only the <b>first</b> block that matches.</p>
-<p>Comparison operators give True or False: <code>==</code> equal, <code>!=</code> not equal, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. Combine conditions with <code>and</code> (both must be true), <code>or</code> (at least one) and <code>not</code> (flips the result).</p>
-<p>The colon <code>:</code> at the end of the line and the <b>indentation</b> (normally 4 spaces) of the next lines are required. Indentation is how Python knows which lines belong inside the block.</p>`,
-c:`marks = 72
-attendance = 90
+print(type(age))
+print(type(height))`,q:[["Which line creates a variable?",["print(x)","x = 5","5 = x","# x = 5"],1],["What type is 3.14?",["int","str","float","bool"],2]]},
+{t:"Input, operators and strings",b:`<p><code>input()</code> returns text. Convert it with <code>int()</code> or <code>float()</code> before numerical calculations. Python supports arithmetic operators such as <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code> and <code>**</code>.</p>`,c:`name = input("Name: ")
+age = int(input("Age: "))
+print(f"Hello {name}. Next year you will be {age + 1}.")`,q:[["What does input() return?",["int","float","str","It depends"],2],["What is 7 // 2?",["3.5","3","4","1"],1]]},
+{t:"Making decisions with if / elif / else",b:`<p>Conditional statements let a program choose between paths. Comparison operators include <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> and <code>&gt;=</code>. Indentation defines the block.</p>`,c:`marks = 72
 if marks >= 80:
     print("A")
 elif marks >= 60:
     print("B")
 else:
-    print("Keep practising")
-
-if marks >= 60 and attendance >= 75:
-    print("Eligible for the next level")`,
-m:`Using <code>=</code> instead of <code>==</code> in a condition. <code>=</code> stores a value; <code>==</code> compares two values.`,
-q:[{q:"Which operator checks equality?",o:["=","==","=>","!"],a:1},{q:"With marks = 72, the example prints:",o:["A","B","Keep practising","Nothing"],a:1},{q:"What is the value of: not True",o:["True","False","None","Error"],a:1}]},
-{t:"Loops: for and while",
-b:`<p>Loops repeat code so you don't have to write it many times. A <code>for</code> loop goes through a sequence one item at a time. <code>range(n)</code> produces the numbers 0 up to <b>n-1</b>; <code>range(a, b)</code> starts at a and stops before b; <code>range(a, b, step)</code> also sets the step size.</p>
-<p>A <code>while</code> loop repeats as long as its condition stays True. Something inside the loop must eventually make the condition False, otherwise you get an infinite loop. <code>break</code> leaves a loop immediately and <code>continue</code> skips to the next round.</p>
-<p>A common pattern is an <b>accumulator</b>: a variable that starts at 0 and grows inside the loop, for example to add up numbers.</p>`,
-c:`total = 0
-for i in range(1, 6):   # 1,2,3,4,5
-    total += i
-print("Sum:", total)
+    print("Keep practising")`,q:[["Which operator checks equality?",["=","==","=>","!="],1],["What does the example print for 72?",["A","B","Keep practising","Nothing"],1]]},
+{t:"Loops: for and while",b:`<p>A <code>for</code> loop repeats over items or a range. <code>range(1, 6)</code> produces 1 through 5. A <code>while</code> loop repeats while its condition remains true.</p>`,c:`for number in range(1, 6):
+    print(number)
 
 count = 3
 while count > 0:
     print("Countdown", count)
-    count -= 1
-print("Go!")`,
-m:`Forgetting to change the variable in a <code>while</code> loop (here, <code>count -= 1</code>) makes it run forever. If that happens in the editor, refresh the page.`,
-q:[{q:"What does range(3) produce?",o:["1, 2, 3","0, 1, 2","0, 1, 2, 3","1, 2"],a:1},{q:"A while loop stops when...",o:["It has run 10 times","Its condition becomes False","Python gets bored","It reaches the last line"],a:1},{q:"for i in range(2, 5) gives:",o:["2, 3, 4, 5","2, 3, 4","3, 4, 5","2, 5"],a:1}]},
-{t:"Lists and Dictionaries",
-b:`<p>A <b>list</b> keeps items in order and can be changed: <code>[10, 20, 30]</code>. Indexing starts at 0, so the first item is <code>nums[0]</code>, and <code>nums[-1]</code> is the last. Useful tools: <code>append()</code> adds an item, <code>remove()</code> deletes a value, <code>len()</code> counts, <code>sorted()</code> returns a sorted copy, and slicing like <code>nums[1:3]</code> takes a part.</p>
-<p>A <b>dictionary</b> stores key-value pairs, like a real dictionary maps a word to a meaning: <code>{"name": "Ali", "grade": "A"}</code>. Read a value with <code>d["name"]</code>, add or change one with <code>d["age"] = 15</code>, and loop with <code>d.items()</code>.</p>
-<p>Use a list when order matters, and a dictionary when you want to look things up by a label.</p>`,
-c:`nums = [10, 20, 30]
-nums.append(40)
-print(nums[0], nums[-1], len(nums), nums[1:3])
+    count -= 1`,q:[["What does range(3) produce?",["1, 2, 3","0, 1, 2","0, 1, 2, 3","1, 2"],1],["A while loop stops when...",["It runs 10 times","Its condition becomes False","Python gets bored","It reaches the last line"],1]]},
+{t:"Lists and dictionaries",b:`<p>A list stores an ordered collection. Indexing starts at 0. Dictionaries store key-value pairs. Both are core tools for organizing program data.</p>`,c:`scores = [72, 85, 91]
+scores.append(88)
+print(scores[0], len(scores))
 
-student = {"name": "Ali", "grade": "A"}
-student["age"] = 15
-for key, value in student.items():
-    print(key, "->", value)`,
-m:`Asking for an index that doesn't exist (like <code>nums[10]</code> in a 4-item list) raises an <code>IndexError</code>. A missing dictionary key raises a <code>KeyError</code>.`,
-q:[{q:"Index of the first item in a list?",o:["1","0","-1","first"],a:1},{q:"How do you read the value for key 'name' in dict d?",o:["d.name","d(name)","d['name']","d{name}"],a:2},{q:"If nums = [1, 2, 3], what is nums[-1]?",o:["1","2","3","Error"],a:2}]},
-{t:"Functions and a Mini Project",
-b:`<p>A function is a named, reusable block of code. Define it with <code>def</code>, give it <b>parameters</b> (inputs), and use <code>return</code> to send a result back. Calling <code>average(80, 70, 90)</code> passes <b>arguments</b> into the parameters. A function without a <code>return</code> gives back <code>None</code>.</p>
-<p>Good functions do one job and have a clear name. Variables created inside a function exist only there (local scope), which keeps different parts of your program from interfering with each other.</p>
-<p><b>Mini project: Grade Calculator.</b> Ask for three marks, compute the average with a function, and print a grade using if/elif/else. The example below shows the structure; try changing the marks and the grade boundaries, then add a fourth mark.</p>`,
-c:`def average(a, b, c):
+student = {"name": "Afnan", "grade": "A"}
+print(student["name"])`,q:[["Index of the first list item?",["1","0","-1","first"],1],["How do you read key 'name' from d?",["d.name","d(name)","d['name']","d{name}"],2]]},
+{t:"Functions",b:`<p>Functions package reusable logic. Define one with <code>def</code>. Parameters let callers provide data and <code>return</code> sends a result back.</p>`,c:`def average(a, b, c):
     return (a + b + c) / 3
 
-def grade(avg):
-    if avg >= 80:
-        return "A"
-    elif avg >= 60:
-        return "B"
-    return "C"
+result = average(80, 70, 90)
+print(result)`,q:[["Which keyword sends a value back?",["give","return","print","def"],1],["What does a function without return give back?",["0","An error","None","An empty string"],2]]},
+{t:"Files and data",b:`<p>Programs can persist information in files. Use <code>open()</code> with a mode such as <code>"r"</code> for reading or <code>"w"</code> for writing. A <code>with</code> block closes the file automatically.</p>`,c:`with open("notes.txt", "w") as file:
+    file.write("ByteLab")
 
-avg = average(80, 70, 90)
-print(f"Average: {avg:.1f}, Grade: {grade(avg)}")`,
-m:`Writing <code>print(...)</code> inside a function when you meant <code>return</code>. Printing shows a value; returning lets other code use it.`,
-q:[{q:"Which keyword sends a value back from a function?",o:["give","return","print","def"],a:1},{q:"What does a function without return give back?",o:["0","An error","None","An empty string"],a:2},{q:"def add(a, b): return a + b. What is add(2, 3)?",o:["23","5","None","Error"],a:1}]}
-]},
-intermediate:{name:"Intermediate",sub:"6 weeks · finish Beginner first",L:[
-{t:"Functions in Depth",
-b:`<p>Functions can have <b>default values</b>: <code>def greet(name, greeting="Hello")</code> lets callers skip the second argument. You can also call with <b>keyword arguments</b> (<code>greet(greeting="Hi", name="Ali")</code>), which makes calls easier to read.</p>
-<p><code>*args</code> collects extra positional arguments into a tuple and <code>**kwargs</code> collects extra keyword arguments into a dictionary. Write a <b>docstring</b> (a string as the first line inside the function) to describe what the function does; tools and <code>help()</code> can display it.</p>
-<p><b>Scope:</b> a variable created inside a function is local to it. Python looks for names in this order: local, enclosing, global, built-in.</p>`,
-c:`def greet(name, greeting="Hello"):
-    """Return a greeting for name."""
-    return f"{greeting}, {name}!"
-
-def total(*args):
-    return sum(args)
-
-print(greet("Ali"), greet("Sara", greeting="Hi"))
-print(total(1, 2, 3, 4))`,
-m:`Never use a list or dict as a default value (<code>def f(x=[])</code>). It is created once and shared between calls. Use <code>None</code> and create the list inside the function.`,
-q:[{q:"def f(x, y=2): return x*y. What is f(3)?",o:["3","5","6","Error"],a:2},{q:"*args collects extra arguments into a...",o:["list","tuple","dictionary","string"],a:1},{q:"A variable created inside a function is...",o:["Global","Local to that function","A constant","Shared with all functions"],a:1}]},
-{t:"Comprehensions and Data Structures",
-b:`<p>A <b>list comprehension</b> builds a list in one line: <code>[x*2 for x in range(5)]</code>. You can filter with a condition at the end: <code>[x for x in nums if x % 2 == 0]</code>. Use them when they stay readable; a normal loop is better for complicated logic.</p>
-<p><b>Tuples</b> look like lists but cannot be changed after creation, which makes them safe for fixed data such as coordinates. <b>Sets</b> store unique items only, so <code>set([1,1,2])</code> is <code>{1, 2}</code>, and they check membership quickly. Dictionaries have handy methods like <code>get(key, default)</code>, which avoids a KeyError.</p>
-<p><code>sorted(items, key=...)</code> sorts by any rule, for example by the length of each word.</p>`,
-c:`nums = [1, 2, 3, 4, 5, 6]
-evens = [n * n for n in nums if n % 2 == 0]
-print(evens)
-print(set([1, 1, 2, 3, 3]))
-point = (3, 4)
-words = ["banana", "kiwi", "apple"]
-print(sorted(words, key=len))
-d = {"a": 1}
-print(d.get("b", 0))`,
-m:`Tuples with one item need a comma: <code>(5,)</code> is a tuple, <code>(5)</code> is just the number 5.`,
-q:[{q:"What is [x*2 for x in range(3)]?",o:["[0, 2, 4]","[2, 4, 6]","[0, 1, 2]","[1, 2, 3]"],a:0},{q:"Which structure removes duplicates?",o:["list","tuple","set","str"],a:2},{q:"Tuples are...",o:["Mutable","Immutable","Only numbers","Only pairs"],a:1}]},
-{t:"Files and Error Handling",
-b:`<p>Use <code>with open("file.txt", "w") as f:</code> to work with files. The <code>with</code> block closes the file automatically, even if something goes wrong. Modes: <code>"r"</code> read, <code>"w"</code> write (erases old content), <code>"a"</code> append. Methods: <code>read()</code>, <code>readlines()</code>, <code>write()</code>.</p>
-<p>Errors are called <b>exceptions</b>. Wrap risky code in <code>try</code> and handle specific problems with <code>except</code>, such as <code>ValueError</code> for bad conversions or <code>FileNotFoundError</code> for missing files. <code>else</code> runs if nothing failed and <code>finally</code> always runs. Catch specific exceptions rather than a bare <code>except:</code>, so you don't hide real bugs.</p>
-<p>In this page's editor, files exist only in the browser's temporary memory and disappear when you refresh.</p>`,
-c:`with open("notes.txt", "w") as f:
-    f.write("Line 1\nLine 2\n")
-
-with open("notes.txt") as f:
-    for line in f:
-        print(line.strip())
-
-try:
-    n = int("abc")
+with open("notes.txt", "r") as file:
+    print(file.read())`,q:[["Which mode writes to a file?",["r","w","x","read"],1],["Why use 'with open(...)'?",["It closes the file automatically","It makes Python faster","It imports a library","It creates a loop"],0]]},
+{t:"Errors and debugging",b:`<p>Errors are part of programming. Syntax errors stop code from being parsed. Exceptions happen while a program runs. <code>try/except</code> lets you handle expected exceptions and provide useful feedback.</p>`,c:`try:
+    age = int("abc")
 except ValueError:
-    print("That is not a number")
-finally:
-    print("Done")`,
-m:`Opening a file with <code>"w"</code> deletes what was in it. Use <code>"a"</code> to add to the end.`,
-q:[{q:"Main benefit of 'with open(...)'?",o:["Faster reading","Closes the file automatically","Encrypts the file","Creates folders"],a:1},{q:"int('abc') raises...",o:["TypeError","ValueError","KeyError","IndexError"],a:1},{q:"A finally block runs...",o:["Only on error","Only on success","Always","Never"],a:2}]},
-{t:"Modules and the Standard Library",
-b:`<p>A <b>module</b> is a Python file you can reuse with <code>import</code>. Python ships with a large standard library: <code>math</code> (<code>sqrt</code>, <code>pi</code>), <code>random</code> (<code>randint</code>, <code>choice</code>), <code>datetime</code> (dates and times), <code>json</code> (data storage) and more. Use <code>import math</code> then <code>math.sqrt(16)</code>, or <code>from math import sqrt</code>.</p>
-<p>Third-party packages are installed on your own computer with <code>pip install package-name</code>; that does not work inside this page's editor. Use a virtual environment (<code>python -m venv venv</code>) per project to keep packages separate.</p>
-<p>The line <code>if __name__ == "__main__":</code> runs code only when the file is run directly, not when it is imported. You will see it in most professional scripts.</p>`,
-c:`import math, random
-from datetime import date
+    print("Please enter a valid integer.")`,q:[["Which exception does int('abc') raise?",["ValueError","KeyError","IndexError","NameError"],0],["What is debugging?",["Finding and fixing problems","Deleting code","Installing Python","Writing comments"],0]]},
+{t:"Modules and imports",b:`<p>Modules let you reuse code. Python includes a standard library with useful modules. Import only what your program needs and keep dependencies documented.</p>`,c:`import math
 
-print(math.sqrt(16), round(math.pi, 3))
-print(random.randint(1, 6))   # 1 to 6, both included
-print(random.choice(["red", "green", "blue"]))
-print(date.today().year)
+radius = 5
+area = math.pi * radius ** 2
+print(area)`,q:[["How do you import math?",["use math","include math","import math","load math"],2],["What does math.pi represent?",["A random number","π","A string","A list"],1]]},
+{t:"Final beginner project: Grade Manager",b:`<p>Bring the fundamentals together. Build a program that accepts several student marks, calculates an average and assigns a grade. Aim for clear functions, input validation and readable output.</p><p><b>Extension:</b> save the results to a text file.</p>`,c:`def average(marks):
+    return sum(marks) / len(marks)
 
-if __name__ == "__main__":
-    print("Running directly")`,
-m:`Don't name your own file after a module (like <code>random.py</code>). Python will import your file instead of the real module.`,
-q:[{q:"math.sqrt(16) returns...",o:["4","4.0","16","Error"],a:1},{q:"random.randint(1, 6) can return...",o:["1 to 5","1 to 6","0 to 6","2 to 6"],a:1},{q:"if __name__ == '__main__' runs the block when...",o:["The file is imported","The file is run directly","Always","Never"],a:1}]},
-{t:"Object-Oriented Programming Basics",
-b:`<p>A <b>class</b> is a blueprint and an <b>object</b> is one thing built from it. Classes bundle data (attributes) and behaviour (methods). <code>__init__</code> runs when an object is created and sets up its attributes; <code>self</code> refers to the object itself and is the first parameter of every method.</p>
-<p><b>Inheritance</b> lets a new class reuse another: <code>class Dog(Animal)</code> gets everything from <code>Animal</code> and can override methods. Define <code>__str__</code> to control what <code>print(obj)</code> shows.</p>
-<p>OOP is useful when you model real things with their own data, such as students, bank accounts or game characters. It is not required for every program, so choose it when it makes the code clearer.</p>`,
-c:`class Animal:
+marks = [80, 72, 91, 88]
+avg = average(marks)
+
+if avg >= 80:
+    grade = "A"
+elif avg >= 60:
+    grade = "B"
+else:
+    grade = "C"
+
+print("Average:", avg)
+print("Grade:", grade)`,q:[["What should a good final project demonstrate?",["Only print()","Several concepts working together","Only comments","No functions"],1],["Why validate user input?",["To make the program safer and more reliable","To make it longer","To avoid variables","It is never useful"],0]]}
+];
+
+const INTERMEDIATE=[
+{t:"Functions in depth",b:`<p>Use default arguments, keyword arguments and clear return values to design reusable functions. Keep functions focused on one job.</p>`,c:`def greet(name, prefix="Hello"):
+    return f"{prefix}, {name}!"
+
+print(greet("Afnan"))
+print(greet("Sara", prefix="Welcome"))`,q:[["What is a default argument?",["A value used when no argument is supplied","A syntax error","A loop","A module"],0]]},
+{t:"List comprehensions",b:`<p>List comprehensions provide a compact way to transform or filter iterables. Use them when they remain readable.</p>`,c:`numbers = [1, 2, 3, 4, 5]
+squares = [n * n for n in numbers]
+evens = [n for n in numbers if n % 2 == 0]
+print(squares)
+print(evens)`,q:[["What does [n*n for n in numbers] create?",["A dictionary","A list of squares","A string","A function"],1]]},
+{t:"Object-oriented programming",b:`<p>Classes define objects with data and behavior. <code>__init__</code> initializes instance attributes and methods operate on the object.</p>`,c:`class Student:
     def __init__(self, name):
         self.name = name
-    def speak(self):
-        return f"{self.name} makes a sound"
 
-class Dog(Animal):
-    def speak(self):
-        return f"{self.name} says Woof"
-    def __str__(self):
-        return f"Dog({self.name})"
+    def introduce(self):
+        return f"I am {self.name}"
 
-pets = [Animal("Generic"), Dog("Rex")]
-for p in pets:
-    print(p.speak())
-print(pets[1])`,
-m:`Forgetting <code>self</code> as the first parameter of a method, or forgetting <code>self.</code> before an attribute name.`,
-q:[{q:"__init__ is called when...",o:["An object is deleted","An object is created","A file opens","A loop ends"],a:1},{q:"What does 'self' refer to?",o:["The class","The current object","The module","A parent class"],a:1},{q:"class Dog(Animal) means Dog...",o:["Contains Animal","Inherits from Animal","Deletes Animal","Is a function"],a:1}]},
-{t:"Project: Expense Tracker",
-b:`<p>Now combine everything. An expense tracker stores expenses as a list of dictionaries, uses functions to add and total them, groups spending by category, and saves data with the <code>json</code> module. <code>json.dumps()</code> turns Python data into a string you can save; <code>json.loads()</code> turns it back.</p>
-<p>Plan before coding: (1) what data do I store? (2) which functions do I need? (3) how do I test each part? Build one function at a time and test it with print statements.</p>
-<p><b>Challenges:</b> add a function that finds the biggest expense, let the user enter expenses with <code>input()</code> and validate them with try/except, save to a file with <code>open()</code> and load it again next time, then rewrite it using a class. Put the finished project on GitHub with a README: it is good portfolio material.</p>`,
-c:`import json
-expenses = []
+student = Student("Afnan")
+print(student.introduce())`,q:[["What is self?",["The current instance","A module","A loop","A file"],0]]},
+{t:"Working with JSON",b:`<p>JSON is common for storing structured data and communicating with web APIs. Python's <code>json</code> module converts between JSON text and Python objects.</p>`,c:`import json
 
-def add(item, amount, category):
-    expenses.append({"item": item, "amount": amount, "category": category})
+student = {"name": "Afnan", "score": 92}
+text = json.dumps(student)
+print(text)
+print(json.loads(text)["score"])`,q:[["Which function converts a Python object to JSON text?",["json.dumps","json.loads","json.open","json.text"],0]]},
+{t:"APIs and requests",b:`<p>Web APIs let programs exchange data. Learn HTTP basics, status codes, JSON responses and safe handling of network failures. This example uses the standard library so no third-party package is required.</p>`,c:`from urllib.request import urlopen
+import json
 
-def by_category():
-    result = {}
-    for e in expenses:
-        result[e["category"]] = result.get(e["category"], 0) + e["amount"]
-    return result
+# Example only: fetch a public JSON endpoint
+# with urlopen("https://example.com/data.json") as response:
+#     data = json.load(response)
+#     print(data)`,q:[["What format is commonly returned by modern APIs?",["JSON","MP3","PNG only","EXE"],0]]},
+{t:"Testing",b:`<p>Tests turn assumptions into repeatable checks. Start with small functions and test normal cases, edge cases and invalid inputs.</p>`,c:`def add(a, b):
+    return a + b
 
-add("Book", 12.5, "study")
-add("Lunch", 4, "food")
-add("Pens", 3, "study")
-print(by_category())
-print(json.dumps(expenses))`,
-m:`Save early and test often. When something breaks, read the last line of the error message first: it names the problem type and the line number.`,
-q:[{q:"json.dumps(data) returns...",o:["A file","A string","A list","Nothing"],a:1},{q:"d.get('x', 0) when 'x' is missing returns...",o:["Error","None","0","'x'"],a:2},{q:"sum([1, 2, 3]) is...",o:["5","6","123","Error"],a:1}]}
-]}};
-const app=document.getElementById("app");let py=null;
-function load(k){try{return JSON.parse(localStorage.getItem("bl_py_"+k))||{}}catch(e){return{}}}
-function save(k,p){try{localStorage.setItem("bl_py_"+k,JSON.stringify(p))}catch(e){}}
+assert add(2, 3) == 5
+assert add(-1, 1) == 0
+print("Tests passed")`,q:[["What does assert do?",["Checks that a condition is true","Creates a class","Downloads a file","Starts a server"],0]]},
+{t:"Project architecture",b:`<p>Larger programs become easier to maintain when responsibilities are separated into modules. Plan data flow, functions, error handling and tests before adding features.</p>`,c:`# Example structure:
+# app.py          -> program entry point
+# models.py       -> data structures
+# services.py     -> core logic
+# tests/          -> automated tests`,q:[["Why split a larger program into modules?",["To separate responsibilities and improve maintainability","To hide all code","To make every file identical","It is required by Python"],0]]},
+{t:"Intermediate capstone",b:`<p>Build a command-line Student Management System. Include add/search/update/delete operations, persistent storage, input validation and tests.</p>`,c:`students = {}
+
+def add_student(student_id, name):
+    students[student_id] = {"name": name}
+
+add_student("001", "Afnan")
+print(students)`,q:[["What should a capstone demonstrate?",["Integrated skills and thoughtful design","Only syntax memorization","A copied tutorial","No testing"],0]]}
+];
+
+const app=document.getElementById("app");
+let pyodide=null, course=(new URLSearchParams(location.search).get("course")||"beginner").toLowerCase();
+let lessons=course==="intermediate"?INTERMEDIATE:BEGINNER;
+const key=course==="intermediate"?"bl_py_intermediate":"bl_py_progress";
+
+function load(){try{return JSON.parse(localStorage.getItem(key)||"{}")}catch(e){return{}}}
+function save(p){localStorage.setItem(key,JSON.stringify(p))}
+function pct(){const p=load();return Math.round(Object.keys(p).length/lessons.length*100)}
+function shell(content){app.innerHTML=`<div class="top"><a class="brand" href="index.html">ByteLab</a><a href="index.html">← Home</a></div>${content}`}
 function home(){
- app.innerHTML=`<a href="index.html">← Back to ByteLab</a><h1>Python Learning Path</h1><p>Free lessons with a quiz after each one. Progress is saved in this browser.</p><div class="grid">`+
- Object.keys(T).map(k=>{const n=Object.keys(load(k)).length,tot=T[k].L.length;return `<div class="card"><h2>${T[k].name}</h2><p>${T[k].sub}</p><div class="bar"><i style="width:${n/tot*100}%"></i></div><p>${n}/${tot} lessons complete</p><button onclick="track('${k}')">Open course</button></div>`}).join("")+
- `<div class="card soon"><h2>Professional</h2><p>Coming soon</p></div></div>`}
-function track(k){
- const p=load(k),L=T[k].L,n=Object.keys(p).length;
- app.innerHTML=`<a href="#" onclick="home();return false">← All levels</a><h1>${T[k].name} Python</h1><div class="bar"><i style="width:${n/L.length*100}%"></i></div><p>${Math.round(n/L.length*100)}% complete</p>`+
- L.map((w,i)=>`<div class="card row"><div><b>Week ${i+1} · Lesson ${i+1}</b><br>${w.t}</div><div>${p[i]?'<span class="done">✓ Done</span> ':''}<button onclick="lesson('${k}',${i})">${p[i]?"Review":"Start"}</button></div></div>`).join("")}
-function lesson(k,i){
- const w=T[k].L[i];let ok=0;window.scrollTo(0,0);
- app.innerHTML=`<a href="#" onclick="track('${k}');return false">← ${T[k].name} course</a><h1>Week ${i+1}: ${w.t}</h1><div class="card">${w.b}<h3>Example</h3><pre>${w.c.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre><p class="tip"><b>Common mistake:</b> ${w.m}</p></div>
- <h2>Quiz</h2>`+w.q.map((q,qi)=>`<div class="card"><b>${q.q}</b>`+q.o.map((o,oi)=>`<button class="opt" data-q="${qi}" data-o="${oi}">${o.replace(/</g,"&lt;")}</button>`).join("")+`</div>`).join("")+
- `<p id="msg"></p><h2>Try it yourself</h2><textarea id="code" spellcheck="false"></textarea><p><button id="run">▶ Run</button> <button class="ghost" id="ex">Load lesson example</button></p><pre id="out">Output appears here.</pre>
- <p>${i>0?`<button class="ghost" onclick="lesson('${k}',${i-1})">← Previous</button> `:""}${i<T[k].L.length-1?`<button class="ghost" onclick="lesson('${k}',${i+1})">Next →</button>`:""}</p>`;
- const code=document.getElementById("code");code.value=w.c;
- document.getElementById("ex").onclick=()=>code.value=w.c;
- document.getElementById("run").onclick=run;
- document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
-  const q=w.q[b.dataset.q];if(b.classList.contains("ok"))return;
-  if(+b.dataset.o===q.a){b.classList.add("ok");ok++;document.querySelectorAll(`[data-q="${b.dataset.q}"]`).forEach(x=>x.disabled=true);
-   if(ok===w.q.length){const p=load(k);p[i]=1;save(k,p);document.getElementById("msg").innerHTML='<span class="done">✓ Lesson complete!</span>'}}
-  else b.classList.add("bad")});
+ const p=load(),n=Object.keys(p).length;
+ shell(`<h1>Python ${course==="intermediate"?"Builder":"Foundations"}</h1><p class="muted">${course==="intermediate"?"Build stronger Python skills for real projects.":"Start from fundamentals and build your first useful programs."}</p>
+ <div class="card"><div class="lessonRow"><b>${n}/${lessons.length} lessons complete</b><span>${pct()}%</span></div><div class="bar"><i style="width:${pct()}%"></i></div></div>
+ <div class="grid">${lessons.map((w,i)=>`<article class="card"><span class="muted">LESSON ${i+1}</span><h3>${w.t}</h3><p>${p[i]?"<span class='done'>✓ Completed</span>":"Learn, practise and pass the quiz."}</p><button class="btn primary" onclick="lesson(${i})">${p[i]?"Review":"Start lesson"}</button></article>`).join("")}</div>`);
 }
-async function run(){
- const out=document.getElementById("out"),btn=document.getElementById("run");btn.disabled=true;
+function lesson(i){
+ const w=lessons[i],p=load();let correct=new Set();
+ shell(`<a href="#" onclick="home();return false">← Course overview</a><h1>Lesson ${i+1}: ${w.t}</h1><div class="meta"><span class="pill">${course==="intermediate"?"Intermediate":"Beginner"}</span><span class="pill">${i+1} of ${lessons.length}</span></div>
+ <div class="card">${w.b}<h3>Example</h3><pre>${esc(w.c)}</pre></div>
+ <h2>Quick check</h2><div id="quiz">${w.q.map((q,qi)=>`<div class="card"><b>${q[0]}</b>${q[1].map((o,oi)=>`<button class="btn quizOption" data-q="${qi}" data-o="${oi}">${esc(o)}</button>`).join("")}</div>`).join("")}</div>
+ <div id="quizMsg" class="card muted">Answer every question correctly to complete this lesson.</div>
+ <h2>Practice lab</h2><div class="card"><p class="muted">Edit the code and run it in your browser. Python is powered by Pyodide; the first run may take a little longer.</p><textarea id="code" spellcheck="false">${esc(w.c)}</textarea><div class="actions"><button class="btn primary" id="run">▶ Run Python</button><button class="btn" id="example">Reset example</button></div><pre id="out">Output will appear here.</pre></div>
+ <div class="lessonNav">${i>0?`<button class="btn" onclick="lesson(${i-1})">← Previous</button>`:"<span></span>"}${i<lessons.length-1?`<button class="btn primary" onclick="lesson(${i+1})">Next →</button>`:`<button class="btn primary" onclick="home()">Finish course →</button>`}</div>`);
+ document.querySelectorAll(".quizOption").forEach(btn=>btn.onclick=()=>{
+   const qi=+btn.dataset.q,oi=+btn.dataset.o;
+   if(oi===w.q[qi][2]){btn.classList.add("correct");correct.add(qi);document.querySelectorAll(`[data-q="${qi}"]`).forEach(x=>x.disabled=true)}
+   else btn.classList.add("wrong");
+   if(correct.size===w.q.length){p[i]=1;save(p);document.getElementById("quizMsg").innerHTML="<span class='done'>✓ Lesson complete! Your progress is saved on this device.</span>"}
+ });
+ document.getElementById("example").onclick=()=>document.getElementById("code").value=w.c;
+ document.getElementById("run").onclick=runPython;
+}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+async function runPython(){
+ const out=document.getElementById("out"),btn=document.getElementById("run");btn.disabled=true;out.textContent="Loading Python…";
  try{
-  if(!py){out.textContent="Loading Python (first run only)...";
-   await new Promise((r,e)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";s.onload=r;s.onerror=e;document.head.appendChild(s)});
-   py=await loadPyodide()}
-  let text="";py.setStdout({batched:s=>text+=s+"\n"});py.setStderr({batched:s=>text+=s+"\n"});
-  try{await py.runPythonAsync(document.getElementById("code").value)}catch(e){text+=String(e.message).split("\n").slice(-3).join("\n")}
+  if(!pyodide){const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";await new Promise((res,rej)=>{s.onload=res;s.onerror=rej;document.head.appendChild(s)});pyodide=await loadPyodide()}
+  let text="";pyodide.setStdout({batched:s=>text+=s+"\n"});pyodide.setStderr({batched:s=>text+=s+"\n"});
+  try{await pyodide.runPythonAsync(document.getElementById("code").value)}catch(e){text+=String(e)}
   out.textContent=text||"(no output)";
- }catch(e){out.textContent="Could not load Python. Check your internet connection."}
- btn.disabled=false}
-home();
-</script></body></html>
+  const n=+(localStorage.getItem("bl_quest_attempts")||0);localStorage.setItem("bl_quest_attempts",String(n+1));
+ }catch(e){out.textContent="Python could not load. Check your internet connection and try again."}
+ btn.disabled=false;
+}
+if(new URLSearchParams(location.search).get("challenge")==="today"){
+ const d=Math.floor(Date.now()/86400000);
+ location.href="index.html#challenges";
+}else home();
+</script>
+</body>
+</html>
