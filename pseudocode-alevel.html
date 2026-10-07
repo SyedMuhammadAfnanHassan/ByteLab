@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AS &amp; A Level Pseudocode – ByteLab</title><link rel="stylesheet" href="assets/pseudocode.css"></head><body>
+<header><a href="index.html"><img src="assets/bytelab_logo_chip_transparent.svg" alt="ByteLab"></a><a href="pseudocode.html">← Pseudocode</a><span>AS &amp; A Level</span></header>
+<div class="wrap"><div class="lay"><nav id="nav"></nav><main id="main"></main></div>
+<section id="ide"><h3>Pseudocode IDE</h3><small>Write Cambridge-style pseudocode, put any INPUT values in the Input box (one per line), then press Run. Use ← (or &lt;-) to assign.</small>
+<textarea id="code" spellcheck="false"></textarea><small>Input values (one per line)</small><textarea id="inp" spellcheck="false"></textarea>
+<button class="b" id="run">Run ▶</button><div id="out"></div></section></div>
+<script src="assets/pseudocode-engine.js"></script>
+<script>window.COURSE={
+ "key": "alevel",
+ "lessons": [
+  {
+   "t": "Declarations, operators and validation",
+   "h": "<p>At AS Level every variable should be declared: <code>DECLARE Age : INTEGER</code>. Join text with <code>&amp;</code> (not +). Comparison operators: <code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code>; logic: <code>AND OR NOT</code>. <b>Validation</b> checks data is reasonable (range, length, type, presence, format, check digit) and re-asks if not; a <code>REPEAT…UNTIL</code> loop is the classic pattern for a range check.</p>",
+   "ex": "DECLARE Mark : INTEGER\nREPEAT\n  OUTPUT \"Enter a mark (0 to 100)\"\n  INPUT Mark\n  IF Mark < 0 OR Mark > 100\n    THEN\n      OUTPUT \"Out of range, please re-enter\"\n  ENDIF\nUNTIL Mark >= 0 AND Mark <= 100\nOUTPUT \"Accepted: \" & Mark",
+   "qs": [
+    {
+     "q": "Which operator joins two strings in Cambridge pseudocode?",
+     "o": [
+      "+",
+      "&",
+      ".",
+      "JOIN"
+     ],
+     "a": 1,
+     "w": "& is the concatenation operator."
+    },
+    {
+     "q": "A range check on a percentage should accept:",
+     "o": [
+      "1 to 99",
+      "0 to 100 inclusive",
+      "0 to 99",
+      "Any number"
+     ],
+     "a": 1,
+     "w": "Both 0 and 100 are valid percentages."
+    }
+   ],
+   "task": {
+    "p": "Keep asking for a mark until it is between 0 and 100 inclusive, then output <b>Accepted:</b> followed by the mark.",
+    "s": "DECLARE Mark : INTEGER\n// write your code below\n",
+    "tests": [
+     {
+      "i": "150\n-5\n70",
+      "o": "Accepted: 70"
+     },
+     {
+      "i": "101\n100",
+      "o": "Accepted: 100"
+     }
+    ]
+   },
+   "inp": "150\n70"
+  },
+  {
+   "t": "Arrays, linear search and bubble sort",
+   "h": "<p>A <b>linear search</b> checks each item in turn until it finds the target or reaches the end; a flag variable records whether it was found. A <b>bubble sort</b> repeatedly compares neighbouring items and swaps them if they are in the wrong order; each pass puts the largest remaining item in its final place. Two-dimensional arrays use two indexes: <code>ARRAY[1:3, 1:4] OF INTEGER</code>.</p>",
+   "ex": "DECLARE Data : ARRAY[1:5] OF INTEGER\nDECLARE I, J, Temp : INTEGER\nData[1] ← 5\nData[2] ← 2\nData[3] ← 9\nData[4] ← 1\nData[5] ← 7\nFOR I ← 1 TO 4\n  FOR J ← 1 TO 5 - I\n    IF Data[J] > Data[J + 1]\n      THEN\n        Temp ← Data[J]\n        Data[J] ← Data[J + 1]\n        Data[J + 1] ← Temp\n    ENDIF\n  NEXT J\nNEXT I\nFOR I ← 1 TO 5\n  OUTPUT Data[I]\nNEXT I",
+   "qs": [
+    {
+     "q": "What does a bubble sort compare?",
+     "o": [
+      "First and last items",
+      "Adjacent items",
+      "Random items",
+      "Smallest and largest"
+     ],
+     "a": 1,
+     "w": "It compares neighbours and swaps if out of order."
+    },
+    {
+     "q": "Why use a Found flag in a linear search?",
+     "o": [
+      "To speed up sorting",
+      "To record if the target was found",
+      "To count the items",
+      "To declare the array"
+     ],
+     "a": 1,
+     "w": "The flag lets the search stop early and report the result."
+    }
+   ],
+   "task": {
+    "p": "Input 5 numbers, then a target number. Output the <b>position</b> (1 to 5) where the target first appears, or <b>0</b> if it is not found.",
+    "s": "DECLARE Data : ARRAY[1:5] OF INTEGER\nDECLARE Target, I, Position : INTEGER\nPosition ← 0\n// write your code below\n",
+    "tests": [
+     {
+      "i": "4\n8\n15\n16\n23\n15",
+      "o": "3"
+     },
+     {
+      "i": "4\n8\n15\n16\n23\n9",
+      "o": "0"
+     }
+    ]
+   }
+  },
+  {
+   "t": "Functions and recursion",
+   "h": "<p>A <b>recursive</b> function calls itself. It needs a <b>base case</b> that stops the recursion and a <b>general case</b> that moves towards it. Each call is held on the call stack until the base case returns, then the results unwind. Recursion is elegant, but uses more memory than a loop because of the stack.</p>",
+   "ex": "FUNCTION Factorial(N : INTEGER) RETURNS INTEGER\n  IF N <= 1\n    THEN\n      RETURN 1\n    ELSE\n      RETURN N * Factorial(N - 1)\n  ENDIF\nENDFUNCTION\n\nOUTPUT Factorial(5)",
+   "qs": [
+    {
+     "q": "What stops a recursive function from calling itself forever?",
+     "o": [
+      "The general case",
+      "The base case",
+      "A FOR loop",
+      "A parameter"
+     ],
+     "a": 1,
+     "w": "The base case returns without another recursive call."
+    },
+    {
+     "q": "Where are the pending recursive calls stored?",
+     "o": [
+      "The call stack",
+      "The hard disk",
+      "The keyboard buffer",
+      "An array in the program"
+     ],
+     "a": 0,
+     "w": "Each call adds a frame to the stack."
+    }
+   ],
+   "task": {
+    "p": "Write a <b>recursive</b> function <code>SumTo(N)</code> that returns 1 + 2 + … + N. Input N and output the result.",
+    "s": "FUNCTION SumTo(N : INTEGER) RETURNS INTEGER\n  // base case, then general case that calls SumTo\nENDFUNCTION\n\nDECLARE X : INTEGER\nINPUT X\nOUTPUT SumTo(X)",
+    "tests": [
+     {
+      "i": "4",
+      "o": "10"
+     },
+     {
+      "i": "10",
+      "o": "55"
+     }
+    ]
+   }
+  },
+  {
+   "t": "A Level: user-defined data types (reading lesson)",
+   "h": "<p>Programmers can define their own types. An <b>enumerated</b> type lists all possible values, in order. A <b>pointer</b> type holds a memory address (<code>^</code> marks it, and a trailing <code>^</code> dereferences it). A type is <b>composite</b> if it refers to other types, such as a record, a set or a class; <b>non-composite</b> types do not. <small>These statements are theory for the exam – the IDE above does not run TYPE definitions yet.</small></p>",
+   "ex": "TYPE Tmonth = (January, February, March, April, May, June,\n               July, August, September, October, November, December)\nDECLARE thisMonth : Tmonth\nthisMonth ← January\n\nTYPE TmonthPointer = ^Tmonth\nDECLARE monthPointer : TmonthPointer\nmonthPointer ← ^thisMonth\nDECLARE myMonth : Tmonth\nmyMonth ← monthPointer^",
+   "qs": [
+    {
+     "q": "Which is a non-composite user-defined type?",
+     "o": [
+      "Record",
+      "Class",
+      "Enumerated",
+      "Set"
+     ],
+     "a": 2,
+     "w": "An enumerated type does not refer to any other data type."
+    },
+    {
+     "q": "In pseudocode, what does monthPointer^ (the ^ after the name) do?",
+     "o": [
+      "Declares a pointer",
+      "Dereferences the pointer to get the value",
+      "Deletes the variable",
+      "Squares the value"
+     ],
+     "a": 1,
+     "w": "Dereferencing gives the contents of the memory location."
+    }
+   ]
+  }
+ ]
+};</script>
+<script src="assets/pseudocode-course.js"></script></body></html>

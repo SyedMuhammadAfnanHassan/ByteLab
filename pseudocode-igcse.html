@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IGCSE Pseudocode – ByteLab</title><link rel="stylesheet" href="assets/pseudocode.css"></head><body>
+<header><a href="index.html"><img src="assets/bytelab_logo_chip_transparent.svg" alt="ByteLab"></a><a href="pseudocode.html">← Pseudocode</a><span>IGCSE</span></header>
+<div class="wrap"><div class="lay"><nav id="nav"></nav><main id="main"></main></div>
+<section id="ide"><h3>Pseudocode IDE</h3><small>Write Cambridge-style pseudocode, put any INPUT values in the Input box (one per line), then press Run. Use ← (or &lt;-) to assign.</small>
+<textarea id="code" spellcheck="false"></textarea><small>Input values (one per line)</small><textarea id="inp" spellcheck="false"></textarea>
+<button class="b" id="run">Run ▶</button><div id="out"></div></section></div>
+<script src="assets/pseudocode-engine.js"></script>
+<script>window.COURSE={
+ "key": "igcse",
+ "lessons": [
+  {
+   "t": "Variables, data types and input/output",
+   "h": "<p>A <b>variable</b> is a named store whose value can change; a <b>constant</b> never changes. Data types: <code>INTEGER</code> (whole number), <code>REAL</code> (with a fraction), <code>CHAR</code> (one character), <code>STRING</code> (text) and <code>BOOLEAN</code> (<code>TRUE</code>/<code>FALSE</code>). Use <code>←</code> to assign a value, <code>INPUT</code> to read, <code>OUTPUT</code> to display. Operators: <code>+ - * / ^</code>, <code>MOD</code> (remainder) and <code>DIV</code> (whole-number division).</p>",
+   "ex": "DECLARE Radius : REAL\nCONSTANT Pi ← 3.142\nOUTPUT \"Enter the radius\"\nINPUT Radius\nOUTPUT \"Area = \", Pi * Radius * Radius",
+   "qs": [
+    {
+     "q": "Which symbol assigns a value to a variable in Cambridge pseudocode?",
+     "o": [
+      "=",
+      "←",
+      "==",
+      ":="
+     ],
+     "a": 1,
+     "w": "← is assignment; = is only used to compare."
+    },
+    {
+     "q": "What is 17 MOD 5?",
+     "o": [
+      "3",
+      "2",
+      "3.4",
+      "12"
+     ],
+     "a": 1,
+     "w": "17 ÷ 5 = 3 remainder 2, and MOD gives the remainder."
+    }
+   ],
+   "task": {
+    "p": "Input two whole numbers and output their sum.",
+    "s": "DECLARE A, B : INTEGER\n// write your code below\n",
+    "tests": [
+     {
+      "i": "3\n4",
+      "o": "7"
+     },
+     {
+      "i": "10\n-4",
+      "o": "6"
+     }
+    ]
+   },
+   "inp": "2"
+  },
+  {
+   "t": "Selection and iteration",
+   "h": "<p><b>Selection</b> chooses a path: <code>IF … THEN … ELSE … ENDIF</code>, or <code>CASE OF … OTHERWISE … ENDCASE</code> for many choices. <b>Iteration</b> repeats code: <code>FOR … NEXT</code> (count-controlled), <code>WHILE … DO … ENDWHILE</code> (condition checked first, may never run) and <code>REPEAT … UNTIL</code> (always runs at least once). <b>Totalling</b> adds values to a running total; <b>counting</b> adds 1 each time.</p>",
+   "ex": "Total ← 0\nFOR Count ← 1 TO 5\n  IF Count MOD 2 = 0\n    THEN\n      OUTPUT Count, \" is even\"\n  ENDIF\n  Total ← Total + Count\nNEXT Count\nOUTPUT \"Total = \", Total",
+   "qs": [
+    {
+     "q": "Which loop always runs at least once?",
+     "o": [
+      "FOR",
+      "WHILE",
+      "REPEAT…UNTIL",
+      "IF"
+     ],
+     "a": 2,
+     "w": "REPEAT…UNTIL checks its condition at the end."
+    },
+    {
+     "q": "Which keyword gives the default branch in a CASE statement?",
+     "o": [
+      "ELSE",
+      "DEFAULT",
+      "OTHERWISE",
+      "END"
+     ],
+     "a": 2,
+     "w": "Cambridge pseudocode uses OTHERWISE."
+    }
+   ],
+   "task": {
+    "p": "Input a whole number and output <b>Even</b> or <b>Odd</b>.",
+    "s": "DECLARE N : INTEGER\nINPUT N\n// write your code below\n",
+    "tests": [
+     {
+      "i": "8",
+      "o": "Even"
+     },
+     {
+      "i": "7",
+      "o": "Odd"
+     }
+    ]
+   }
+  },
+  {
+   "t": "Arrays and standard methods",
+   "h": "<p>An <b>array</b> stores many values of one type under one name, accessed by an index: <code>DECLARE Marks : ARRAY[1:5] OF INTEGER</code>. Use a <code>FOR</code> loop to read or write every element. Standard methods you must know: totalling, counting, finding the maximum/minimum/average, <b>linear search</b> and <b>bubble sort</b>. To find the maximum, start with the first item and replace it whenever a larger one appears.</p>",
+   "ex": "DECLARE Marks : ARRAY[1:5] OF INTEGER\nDECLARE Max, Index : INTEGER\nFOR Index ← 1 TO 5\n  INPUT Marks[Index]\nNEXT Index\nMax ← Marks[1]\nFOR Index ← 2 TO 5\n  IF Marks[Index] > Max\n    THEN\n      Max ← Marks[Index]\n  ENDIF\nNEXT Index\nOUTPUT \"Highest = \", Max",
+   "qs": [
+    {
+     "q": "How many elements does ARRAY[1:5] OF INTEGER hold?",
+     "o": [
+      "4",
+      "5",
+      "6",
+      "1"
+     ],
+     "a": 1,
+     "w": "Indexes 1, 2, 3, 4, 5."
+    },
+    {
+     "q": "Which standard method keeps a running sum of values?",
+     "o": [
+      "Counting",
+      "Totalling",
+      "Searching",
+      "Sorting"
+     ],
+     "a": 1,
+     "w": "Totalling: Total ← Total + Value."
+    }
+   ],
+   "task": {
+    "p": "Input 5 numbers into an array and output the <b>smallest</b>.",
+    "s": "DECLARE Nums : ARRAY[1:5] OF INTEGER\nDECLARE Min, I : INTEGER\n// write your code below\n",
+    "tests": [
+     {
+      "i": "5\n3\n9\n1\n7",
+      "o": "1"
+     },
+     {
+      "i": "8\n6\n9\n7\n10",
+      "o": "6"
+     }
+    ]
+   },
+   "inp": "5\n3\n9\n1\n7"
+  },
+  {
+   "t": "Procedures, functions and strings",
+   "h": "<p>A <b>procedure</b> is a named block run with <code>CALL</code>. A <b>function</b> also sends back a value with <code>RETURN</code>. Both can take <b>parameters</b>. Variables declared inside are <b>local</b>; those declared outside are <b>global</b>. Library routines you need: <code>LENGTH</code>, <code>SUBSTRING(text, start, length)</code> (positions start at 1), <code>UCASE</code>, <code>LCASE</code>, <code>ROUND</code>, <code>RANDOM</code>.</p>",
+   "ex": "FUNCTION Celsius(F : REAL) RETURNS REAL\n  RETURN (F - 32) / 1.8\nENDFUNCTION\n\nPROCEDURE Stars(N : INTEGER)\n  DECLARE I : INTEGER\n  FOR I ← 1 TO N\n    OUTPUT \"*\"\n  NEXT I\nENDPROCEDURE\n\nOUTPUT Celsius(212)\nCALL Stars(3)\nOUTPUT UCASE(\"hello\"), \" \", LENGTH(\"Cambridge\")",
+   "qs": [
+    {
+     "q": "What must a function do that a procedure does not?",
+     "o": [
+      "Take parameters",
+      "RETURN a value",
+      "Use a loop",
+      "Use CALL"
+     ],
+     "a": 1,
+     "w": "A function returns a value to where it was called."
+    },
+    {
+     "q": "What does SUBSTRING(\"Computer Science\", 10, 7) return?",
+     "o": [
+      "Science",
+      "Computer",
+      "Scienc",
+      "ience"
+     ],
+     "a": 0,
+     "w": "Start at character 10, take 7 characters."
+    }
+   ],
+   "task": {
+    "p": "Write a function <code>Square</code> that returns a number multiplied by itself. Input a whole number and output its square using your function.",
+    "s": "FUNCTION Square(N : INTEGER) RETURNS INTEGER\n  // write your code here\nENDFUNCTION\n\nDECLARE X : INTEGER\nINPUT X\nOUTPUT Square(X)",
+    "tests": [
+     {
+      "i": "5",
+      "o": "25"
+     },
+     {
+      "i": "12",
+      "o": "144"
+     }
+    ]
+   }
+  }
+ ]
+};</script>
+<script src="assets/pseudocode-course.js"></script></body></html>
