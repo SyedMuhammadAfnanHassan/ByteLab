@@ -1,12 +1,12 @@
-# 🧑‍💻 ByteLab — Learn. Build. Grow.
+# ByteLab — Learn. Build. Grow.
 
 > **A free, student-led platform helping young learners learn Python through structured courses, practice, and projects.**
 
-🌐 **Website:** https://syedmuhammadafnanhassan.github.io/ByteLab/
+ **Website:** https://syedmuhammadafnanhassan.github.io/ByteLab/
 
 ---
 
-## 💡 What is ByteLab?
+##  What is ByteLab?
 
 **ByteLab** is a free programming learning platform created to help young learners take their first steps into computer science.
 
@@ -20,7 +20,7 @@ Instead of only reading about programming concepts, learners can study a concept
 
 ---
 
-## 🐍 What can you learn?
+##  What can you learn?
 
 ByteLab currently focuses on **Python**, with learning paths designed for beginners and progressing toward more practical programming skills.
 
@@ -54,7 +54,7 @@ More advanced topics are planned as ByteLab grows.
 
 ---
 
-## ⚡ Learn by Practicing
+##  Learn by Practicing
 
 ByteLab includes a **Daily Quest** system where learners can tackle small programming challenges.
 
@@ -66,21 +66,21 @@ Regular practice helps learners turn concepts into actual programming skills.
 
 ---
 
-## 🚀 Build Real Projects
+##  Build Real Projects
 
 ByteLab also provides project ideas that allow learners to apply what they have learned.
 
 Current project examples include:
 
-- 🧮 Grade Calculator
-- 🎮 Quiz Game
-- 🌐 Student Portfolio
+-  Grade Calculator
+-  Quiz Game
+-  Student Portfolio
 
 Each project connects programming concepts with something that can actually be built.
 
 ---
 
-## 🌱 Why I Built ByteLab
+##  Why I Built ByteLab
 
 I believe learning computer science should be more accessible to students who are just getting started.
 
@@ -98,7 +98,7 @@ ByteLab is my attempt to create a simple answer:
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 ByteLab is currently built using web technologies including:
 
@@ -111,7 +111,7 @@ The project is continuously being developed and improved.
 
 ---
 
-## 🤝 Open Source & Contributions
+##  Open Source & Contributions
 
 ByteLab is being developed as an **open-source student project**.
 
@@ -119,19 +119,19 @@ I welcome contributions and ideas from students, educators, and developers who w
 
 You can contribute by:
 
-- 🐛 Reporting bugs
-- 💡 Suggesting new features
-- 🧩 Suggesting coding challenges
-- 📚 Improving lessons
-- 🚀 Creating project ideas
-- 💻 Contributing code
-- 📝 Improving documentation
+-  Reporting bugs
+-  Suggesting new features
+-  Suggesting coding challenges
+-  Improving lessons
+-  Creating project ideas
+-  Contributing code
+-  Improving documentation
 
 If you have an idea that could make ByteLab more useful for learners, feel free to open an issue or contribute to the project.
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 ByteLab is still growing. Some things I plan to explore include:
 
@@ -151,24 +151,24 @@ The roadmap will change as learners use ByteLab and provide feedback.
 
 ---
 
-## 📊 Project Philosophy
+##  Project Philosophy
 
 ByteLab follows three simple ideas:
 
-### 📖 Learn
+###  Learn
 Understand the concept.
 
-### 🧠 Practice
+###  Practice
 Solve problems using the concept.
 
-### 🔨 Build
+###  Build
 Use your knowledge to create something real.
 
 **Because learning to code should involve more than watching tutorials.**
 
 ---
 
-## 👨‍💻 About the Creator
+##  About the Creator
 
 ByteLab was created and is maintained by an **A-Level student from Pakistan** interested in computer science, technology, and engineering.
 
@@ -176,7 +176,7 @@ The project started as a personal idea and is being developed into a resource th
 
 ---
 
-## 🌐 Start Learning
+##  Start Learning
 
 Ready to start?
 
